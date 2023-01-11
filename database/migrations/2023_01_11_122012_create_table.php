@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sale_item_images', function (Blueprint $table) {
+        Schema::create('sizes', function (Blueprint $table) {
             $table->increments("id");
-            $table->integer("sale_item_id")->length(10);
-            $table->string("image_path");
+            $table->string("size", 50);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sale_item_images');
+        Schema::dropIfExists('sizes');
     }
 };
