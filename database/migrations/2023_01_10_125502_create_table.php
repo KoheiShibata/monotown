@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name", 50);
             $table->string("brand", 50)->nullable();
             $table->integer("price")->length(10);
-            $table->integer("size_id")->length(2);
+            $table->integer("category_id")->length(2);
             $table->text("content");
             $table->softDeletes();
             $table->timestamps();
