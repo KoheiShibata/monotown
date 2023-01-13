@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MonotownController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+
+Route::controller(MonotownController::class)->prefix("monotown")->group(function () {
+    Route::get("/", "monotownshop");
+    // Route::post("/", "create");
+    // Route::put("/", "edit");
+    // Route::delete("/{id}", "delete");
 });
