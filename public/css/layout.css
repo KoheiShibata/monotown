@@ -1,3 +1,4 @@
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -12,8 +13,8 @@
     z-index: 1;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    left: 45%;
+
+.footer p {
+    text-align: center;
+    margin-top: 8px;
 }
