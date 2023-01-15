@@ -22,15 +22,17 @@ class MonotownController extends Controller
                     ]
                 ]
             );
-            $json = file_get_contents("https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid=&brand_id=58989&genre_category_id=13457&image_size=300&results=100&in_stock=true", false, $context);
+            $json = file_get_contents("https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid=dj00aiZpPXRJb0R5MUJzRVRSMyZzPWNvbnN1bWVyc2VjcmV0Jng9MDk-&brand_id=58989&genre_category_id=13457&image_size=300&results=100&in_stock=true", false, $context);
             $datas = json_decode($json, true);
-
+            
             if (array_key_exists("Error", $datas)) {
                 throw new \Exception();
             }
+            
+            $totalResults = $datas["totalResultsReturned"];
             $itemDatas = $this->dataformater($datas);
 
-            return view("/main", compact("itemDatas"));
+            return view("/main", compact("itemDatas", "totalResults"));
             
         } catch (Exception $e) {
             abort(404);

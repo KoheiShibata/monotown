@@ -16,7 +16,7 @@
 <body>
     <header class="header">
         <div class="header-logo">
-            <p>monotown</p>
+            <p>MONOTOWN</p>
         </div>
     </header>
 

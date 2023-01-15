@@ -1,26 +1,43 @@
-.main {
+.wrapper {
     width: 1200px;
     margin: auto;
+    display: flex;
     margin-top: 60px;
 }
 
-.sale-list {
+
+/* aside */
+.search-sidebar {
+    width: 200px;
+    float: left;
+}
+
+.total-result {
+    border-radius: 8px;
+    padding: 12px 5px 10px 5px;
+}
+
+/* main */
+.sale {
+    width: 800px;
+}
+
+.sale__list {
     display: flex;
     flex-wrap: wrap;
     row-gap: 10px;
 }
 
-.sale-list__item {
+.sale__item {
     width: 25%;
-    list-style: none;
     position: relative;
 }
 
-.sale-list__item img {
+.sale__item img {
     width: 100%;
 }
 
-.sale-list__item p {
+.sale__item p {
     text-decoration: none;
     position: absolute;
     bottom: 4.5px;
