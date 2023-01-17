@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 
 Route::controller(MonotownController::class)->prefix("monotown")->group(function () {
-    Route::get("/", "monotownshop");
+    Route::get("/", "monotown");
     // Route::post("/", "create");
     // Route::put("/", "edit");
     // Route::delete("/{id}", "delete");

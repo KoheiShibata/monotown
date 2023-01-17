@@ -7,11 +7,11 @@ return [
     ],
 
     "MensBrand" => [
-        "58989" => "LILL",
-        "38074" => "cussil",
-        "57013" => "Loose",
-        "46460" => "Nilway",
-        "10263" => "Lui's",
+        "brand_id=58989" => "LILL",
+        "query=cussil" => "cussil",
+        "query=remer" => "remer",
+        "brand_id=57013" => "Loose",
+        "brand_id=67008" => "CLEL",
     ],
 
     "WomanBrand" => [

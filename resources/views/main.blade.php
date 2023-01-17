@@ -19,8 +19,8 @@
                 <ul class="common__list">
                     @foreach(config(CONDITION) as $key => $conditionName)
                     <li class="common__name">
-                        <label class="common__label" for="condition">
-                            <input type="radio" name="condition" value="{{ $key }}">{{ $conditionName }}
+                        <label class="common__label" for="{{ $conditionName }}">
+                            <input type="radio" class="condition" name="condition" id="{{ $conditionName }}" value="{{ $key }}">{{ $conditionName }}
                         </label>
                     </li>
                     @endforeach
@@ -29,10 +29,10 @@
             <li class="common__search-sidebar">
                 <p class="common__title"><img src="{{ asset('/storage/img/mens-mark.png') }}" alt="">メンズブランド</p>
                 <ul class="common__list">
-                    @foreach(config(MENS_BRAND) as $key => $brandName)
+                    @foreach(config(MENS_BRAND) as $key => $mensBrandName)
                     <li class="common__name">
-                        <label class="common__label" for="{{ $brandName }}">
-                            <input type="radio" name="{{ $brandName }}" value="{{ $key }}">{{ $brandName }}
+                        <label class="common__label" for="{{ $mensBrandName }}">
+                            <input type="radio" class="mensBrand" name="mensBrand" id="{{ $mensBrandName }}" value="{{ $key }}">{{ $mensBrandName }}
                         </label>
                     </li>
                     @endforeach
