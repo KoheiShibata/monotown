@@ -4,9 +4,14 @@ li {
 }
 
 .common__title {
+    margin-bottom: 3px;
     padding-top: 20px;
 }
 
+.common__title img {
+    width: 14px;
+    padding: 0 5px;
+}
 
 .common__name {
     padding: 12px 0 12px 5px;
@@ -27,6 +32,30 @@ li {
     background-color: #EAEAEA;
 }
 
+.header-logo p {
+    font-weight: bold;
+}
+
+
+.hamburger__btn {
+    color: black;
+    background-color: black;
+}
+
+.hamburger__btn::before {
+    background-color: black;
+}
+
+.hamburger__btn::after {
+    background-color: black;
+}
+
+.hamburger__btn.hamburger__btn--active {
+    color:#EAEAEA;
+    background-color: #EAEAEA;
+
+}
+
 .common__search-sidebar {
     background: #F8F8F8;
     border-bottom: 1px solid rgb(0, 0, 0, 0.1);
@@ -42,6 +71,11 @@ li {
 
 .total-result span {
     color: white;
+}
+
+.common__name:hover {
+    background-color: #CCCCCC;
+    transition: 0.5s;
 }
 
 .sale__item p {
@@ -82,4 +116,49 @@ li {
 
 .sale__item p {
     font-size: 16px;
+}
+
+
+@media screen and (max-width: 480px) {
+    /* common */
+    .common__search-sidebar.common__search-sidebar--end {
+        padding-bottom: 100px;
+    }
+
+
+    /* color */
+    .header {
+        border: none;
+    }
+
+    .nav-search {
+        background-color: #FAFAFA;
+    }
+
+    .nav-search__item--checked {
+        border-bottom: 1px solid rgb(0, 0, 0, 0.9);
+    }
+
+
+    /* font */
+    .header-logo p {
+        font-size: 22px;
+    }
+
+    .condition__label {
+        font-size: 14px;
+    }
+
+
+    .total-result span {
+        font-size: 20px;
+    }
+
+    .sale__item p {
+        font-size: 14px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
 }

@@ -15,17 +15,34 @@
 
 <body>
     <header class="header">
+        
         <div class="header-logo">
             <p>MONOTOWN</p>
         </div>
+        
+        <!-- hamburger -->
+            <span class="hamburger__btn" id="hamburger__btn"></span>
     </header>
+
+    <nav class="nav-search">
+        <ul class="nav-search__menu">
+            @foreach(config(CONDITION) as $key => $conditionName)
+            <li class="nav-search__item">
+                <label class="condition__label" for="condition">
+                    <input type="radio" name="condition" value="{{ $key }}">{{ $conditionName }}
+                </label>
+            </li>
+            @endforeach
+        </ul>
+    </nav>
 
     @yield("main")
 
     <footer class="footer">
-        <p>© 2023 monotown s-kohei</p>
+        <p>© 2023 s-kohei monotown</p>
     </footer>
 
-
+    <script src="{{asset('/js/hamburgerMenu.js')}}"></script>
 </body>
+
 </html>

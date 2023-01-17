@@ -1,8 +1,9 @@
 <?php
 return [
     "condition" => [
-        "new" => "新品",
-        "used" => "古着",
+        "" => "All",
+        "new" => "New",
+        "used" => "Used",
     ],
 
     "MensBrand" => [

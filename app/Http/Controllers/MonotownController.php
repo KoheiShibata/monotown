@@ -28,7 +28,7 @@ class MonotownController extends Controller
             if (array_key_exists("Error", $datas)) {
                 throw new \Exception();
             }
-            
+
             $totalResults = $datas["totalResultsReturned"];
             $itemDatas = $this->dataformater($datas);
 
@@ -59,7 +59,7 @@ class MonotownController extends Controller
                 "image" => $data['exImage']['url'],
                 "url" =>  $data['url'],
                 "condition" => $data["condition"],
-            ];  
+            ];
         }
         return $items;
     }
