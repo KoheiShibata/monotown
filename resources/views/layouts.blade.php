@@ -43,9 +43,7 @@
         <p>© 2023 s-kohei monotown</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="{{asset('/js/hamburgerMenu.js')}}"></script>
-    <script src="{{asset('/js/radioCheck.js')}}"></script>
 </body>
 
 </html>

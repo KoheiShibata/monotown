@@ -2,8 +2,8 @@
 return [
     "condition" => [
         "" => "All",
-        "new" => "New",
-        "used" => "Used",
+        "condition=new" => "New",
+        "condition=used" => "Used",
     ],
 
     "MensBrand" => [
@@ -19,8 +19,8 @@ return [
     ],
 
     "sort" => [
-        "-score" => "おすすめ順",
-        "+price" => "価格の安い順",
-        "-price" => "価格の高い順",
+        "sort=-score" => "おすすめ順",
+        "sort=+price" => "価格の安い順",
+        "sort=-price" => "価格の高い順",
     ]
 ];

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
+use SebastianBergmann\Type\FalseType;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -23,19 +24,49 @@ class MonotownController extends Controller
                 ]
             );
 
-
-            $json = file_get_contents("https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid=dj00aiZpPXRJb0R5MUJzRVRSMyZzPWNvbnN1bWVyc2VjcmV0Jng9MDk-&brand_id=58989&genre_category_id=13457&image_size=300&results=100&in_stock=true", false, $context);
+            $yahoo_url = YAHOO_API;
+            $json = file_get_contents($yahoo_url."&brand_id=58989", false, $context);
             $datas = json_decode($json, true);
-
+            
             if($request->has("condition") == true) {
-                $json = file_get_contents("https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid=dj00aiZpPXRJb0R5MUJzRVRSMyZzPWNvbnN1bWVyc2VjcmV0Jng9MDk-&brand_id=58989&genre_category_id=13457&image_size=300&results=100&in_stock=true&condition={$request->condition}", false, $context);
-                $datas = json_decode($json, true);
+                $request->session()->put("condition", $request->condition);
+                // echo $request->session()->get("condition");
+                // exit;
             }
 
             if($request->has("mensBrand") == true) {
-                $json = file_get_contents("https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch?appid=dj00aiZpPXRJb0R5MUJzRVRSMyZzPWNvbnN1bWVyc2VjcmV0Jng9MDk-&{$request->mensBrand}&genre_category_id=13457&image_size=300&results=100&in_stock=true");
-                $datas = json_decode($json, true);
+                $request->session()->put("mensBrand", $request->mensBrand);
             }
+
+            if($request->has("sort") == true) {
+                
+            }
+
+            if($request->session()->has("condition") == true) {
+                $yahoo_url .= "&{$request->session()->get('condition')}";
+            }
+
+            if($request->session()->has("mensBrand") == true) {
+                $yahoo_url .= "&{$request->session()->get('mensBrand')}";
+            }
+            // echo $yahoo_url;
+            // exit;
+
+            $json = file_get_contents($yahoo_url, false, $context);
+            $datas = json_decode($json, true);
+
+
+         
+            
+            // if($request->has("condition") == true) {
+            //     $json = file_get_contents(YAHOO_API."&{$request->condition}", false, $context);
+            //     $datas = json_decode($json, true);
+            // }
+            
+            // if($request->has("mensBrand") == true) {
+            //     $json = file_get_contents(YAHOO_API."&{$request->mensBrand}", false, $context);
+            //     $datas = json_decode($json, true);
+            // }
             
             if (array_key_exists("Error", $datas)) {
                 throw new \Exception();

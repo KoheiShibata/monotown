@@ -18,11 +18,11 @@
                 <p class="common__title">商品状態</p>
                 <ul class="common__list">
                     @foreach(config(CONDITION) as $key => $conditionName)
-                    <li class="common__name">
-                        <label class="common__label" for="{{ $conditionName }}">
-                            <input type="radio" class="condition" name="condition" id="{{ $conditionName }}" value="{{ $key }}">{{ $conditionName }}
-                        </label>
-                    </li>
+                    <a href="/monotown?condition={{ $key }}">
+                        <li class="common__name {{ session('condition') == $key ? 'common__name--checked' : '' }}">
+                            {{ $conditionName }}
+                        </li>
+                    </a>
                     @endforeach
                 </ul>
             </li>
@@ -30,11 +30,11 @@
                 <p class="common__title"><img src="{{ asset('/storage/img/mens-mark.png') }}" alt="">メンズブランド</p>
                 <ul class="common__list">
                     @foreach(config(MENS_BRAND) as $key => $mensBrandName)
-                    <li class="common__name">
-                        <label class="common__label" for="{{ $mensBrandName }}">
-                            <input type="radio" class="mensBrand" name="mensBrand" id="{{ $mensBrandName }}" value="{{ $key }}">{{ $mensBrandName }}
-                        </label>
-                    </li>
+                    <a href="/monotown?mensBrand={{ $key }}">
+                        <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
+                            {{ $mensBrandName }}
+                        </li>
+                    </a>
                     @endforeach
                 </ul>
             </li>
@@ -43,9 +43,7 @@
                 <ul class="common__list">
                     @foreach(config(MENS_BRAND) as $key => $brandName)
                     <li class="common__name">
-                        <label class="common__label" for="{{ $brandName }}">
-                            <input type="radio" name="{{ $brandName }}" value="{{ $key}}">{{ $brandName }}
-                        </label>
+                        {{ $brandName }}
                     </li>
                     @endforeach
                 </ul>
@@ -55,9 +53,7 @@
                 <ul class="common__list">
                     @foreach(config(SORT) as $key => $sortName)
                     <li class="common__name">
-                        <label class="common__label" for="{{ $sortName }}">
-                            <input type="radio" name="{{ $sortName }}" value="{{ $key}}">{{ $sortName }}
-                        </label>
+                        {{ $sortName }}
                     </li>
                     @endforeach
                 </ul>
