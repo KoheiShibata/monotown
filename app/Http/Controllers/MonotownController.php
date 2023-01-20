@@ -30,8 +30,6 @@ class MonotownController extends Controller
             
             if($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
-                // echo $request->session()->get("condition");
-                // exit;
             }
 
             if($request->has("mensBrand") == true) {
@@ -39,7 +37,7 @@ class MonotownController extends Controller
             }
 
             if($request->has("sort") == true) {
-                
+                $request->session()->put("sort", $request->sort);
             }
 
             if($request->session()->has("condition") == true) {
@@ -49,24 +47,14 @@ class MonotownController extends Controller
             if($request->session()->has("mensBrand") == true) {
                 $yahoo_url .= "&{$request->session()->get('mensBrand')}";
             }
-            // echo $yahoo_url;
-            // exit;
 
+            if($request->session()->has("sort") == true) {
+                $sort_encode = urlencode($request->session()->get("sort"));
+                $yahoo_url .= "&sort={$sort_encode}";
+            }
             $json = file_get_contents($yahoo_url, false, $context);
             $datas = json_decode($json, true);
-
-
-         
             
-            // if($request->has("condition") == true) {
-            //     $json = file_get_contents(YAHOO_API."&{$request->condition}", false, $context);
-            //     $datas = json_decode($json, true);
-            // }
-            
-            // if($request->has("mensBrand") == true) {
-            //     $json = file_get_contents(YAHOO_API."&{$request->mensBrand}", false, $context);
-            //     $datas = json_decode($json, true);
-            // }
             
             if (array_key_exists("Error", $datas)) {
                 throw new \Exception();
@@ -102,8 +90,12 @@ class MonotownController extends Controller
                 "image" => $data['exImage']['url'],
                 "url" =>  $data['url'],
                 "condition" => $data["condition"],
+                "sale_price" => $data['priceLabel']['discountedPrice'],
             ];
         }
         return $items;
     }
+
+
+    
 }

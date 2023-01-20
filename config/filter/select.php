@@ -19,8 +19,8 @@ return [
     ],
 
     "sort" => [
-        "sort=-score" => "おすすめ順",
-        "sort=+price" => "価格の安い順",
-        "sort=-price" => "価格の高い順",
+        "-score" => "おすすめ順",
+        "%2Bprice" => "価格の安い順",
+        "-price" => "価格の高い順",
     ]
 ];

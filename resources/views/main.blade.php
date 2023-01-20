@@ -26,6 +26,18 @@
                     @endforeach
                 </ul>
             </li>
+            <li class="common__search-sidebar common__search-sidebar--end">
+                <p class="common__title">価格</p>
+                <ul class="common__list">
+                    @foreach(config(SORT) as $key => $sortName)
+                    <a href="/monotown?sort={{ $key }}">
+                        <li class="common__name {{ urlencode(session('sort')) ==  $key ? 'common__name--checked' : ''}}">
+                            {{ $sortName }}
+                        </li>
+                    </a>
+                    @endforeach
+                </ul>
+            </li>
             <li class="common__search-sidebar">
                 <p class="common__title"><img src="{{ asset('/storage/img/mens-mark.png') }}" alt="">メンズブランド</p>
                 <ul class="common__list">
@@ -48,16 +60,6 @@
                     @endforeach
                 </ul>
             </li>
-            <li class="common__search-sidebar common__search-sidebar--end">
-                <p class="common__title">価格</p>
-                <ul class="common__list">
-                    @foreach(config(SORT) as $key => $sortName)
-                    <li class="common__name">
-                        {{ $sortName }}
-                    </li>
-                    @endforeach
-                </ul>
-            </li>
         </ul>
     </aside>
 
@@ -67,9 +69,9 @@
             <li class="sale__item">
                 <!-- <a href="{{ $data['url'] }}">
                 </a> -->
-                <a href="#">
+                <a href="{{ $data['url'] }}">
                     <img src="{{ $data['image'] }}" alt="">
-                    <p class="{{ $data['condition'] == 'used' ? 'color--red' : '' }}">{{ $data["price"] }}</p>
+                    <p class="{{ $data['sale_price'] !== null ? 'color--red' : '' }}">{{ $data["price"] }}</p>
                 </a>
             </li>
             @endforeach

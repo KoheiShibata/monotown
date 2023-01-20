@@ -50,7 +50,6 @@ a {
     font-weight: bold;
 }
 
-
 .hamburger__btn {
     color: black;
     background-color: black;
@@ -76,7 +75,7 @@ a {
 }
 
 .common__name--checked {
-    background-color: #BBBBBB;
+    background-color: #AAAAAA;
 }
 
 .common__name {
