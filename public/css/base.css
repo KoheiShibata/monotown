@@ -1,8 +1,187 @@
+/* common */
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.common__title {
+    margin-bottom: 3px;
+    padding-top: 20px;
+    padding-left: 3px;
+}
+
+.common__title img {
+    width: 14px;
+    padding: 0 5px;
+}
+
+.common__name {
+    display: block;
+    padding: 14px 0;
+    padding-left: 8px;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+
+.common__label {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+
+.common__name input {
+    display: none;
+}
+
+
+
 /* color */
 .header {
-    background-color: #EEEEEE;
+    background-color: #EAEAEA;
+}
+
+.header-logo p {
+    font-weight: bold;
+}
+
+.hamburger__btn {
+    color: black;
+    background-color: black;
+}
+
+.hamburger__btn::before {
+    background-color: black;
+}
+
+.hamburger__btn::after {
+    background-color: black;
+}
+
+.hamburger__btn.hamburger__btn--active {
+    color: #EAEAEA;
+    background-color: #EAEAEA;
+
+}
+
+.common__search-sidebar {
+    background: #F8F8F8;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.common__name--checked {
+    background-color: #AAAAAA;
+}
+
+.common__name {
+    color: #222;
+}
+
+.total-result {
+    background-color: #C1C1C1;
+}
+
+.total-result h1 {
+    color: #EEEEEE;
+}
+
+.total-result span {
+    color: white;
+}
+
+.common__name:hover {
+    background-color: #CCCCCC;
+    transition: 0.8s;
+}
+
+.sale__item p {
+    background-color: white;
+    color: #222;
+}
+
+.sale__item .color--red {
+    color: #ed293e;
 }
 
 
 
 /* font */
+.header-logo p {
+    font-size: 24px;
+}
+
+.footer p {
+    font-size: 16px;
+}
+
+.total-result {
+    font-size: 16px;
+}
+
+.total-result span {
+    font-size: 32px;
+}
+
+.common__title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.common__name {
+    font-size: 16px;
+}
+
+.sale__item p {
+    font-size: 16px;
+}
+
+
+@media screen and (max-width: 480px) {
+
+    /* common */
+    .common__search-sidebar.common__search-sidebar--end {
+        padding-bottom: 100px;
+    }
+
+
+    /* color */
+    .header {
+        border: none;
+    }
+
+    .nav-search {
+        background-color: #FAFAFA;
+    }
+
+    .nav-search__item--checked {
+        border-bottom: 1px solid rgb(0, 0, 0, 0.9);
+    }
+
+
+    /* font */
+    .header-logo p {
+        font-size: 22px;
+    }
+
+    .condition__label {
+        font-size: 14px;
+    }
+
+
+    .total-result span {
+        font-size: 20px;
+    }
+
+    .sale__item p {
+        font-size: 14px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+}
