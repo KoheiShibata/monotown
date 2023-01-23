@@ -25,8 +25,18 @@ class MonotownController extends Controller
             );
 
             $yahoo_url = YAHOO_API;
-            $json = file_get_contents($yahoo_url."&brand_id=58989", false, $context);
-            $datas = json_decode($json, true);
+            // $ig_json = file_get_contents(TEST_IG_URL, false, $context);
+            // $ig_datas = json_decode($ig_json, true);
+            
+            
+            // file_put_contents("instagram.json", print_r($ig_json, true), LOCK_EX);
+            $ig_json = file_get_contents("instagram.json", false, $context);
+            $ig_datas = json_decode($ig_json, true);
+
+            
+            
+            // $json = file_get_contents($yahoo_url."&brand_id=58989", false, $context);
+            // $datas = json_decode($json, true);
             
             if($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
@@ -52,6 +62,7 @@ class MonotownController extends Controller
                 $sort_encode = urlencode($request->session()->get("sort"));
                 $yahoo_url .= "&sort={$sort_encode}";
             }
+
             $json = file_get_contents($yahoo_url, false, $context);
             $datas = json_decode($json, true);
             
@@ -62,6 +73,11 @@ class MonotownController extends Controller
 
             $totalResults = $datas["totalResultsReturned"];
             $itemDatas = $this->dataformater($datas);
+
+            $hashtagDatas = $this->instgramDataFormater($ig_datas);
+            // print_r($hashtagDatas);
+            // exit;
+
 
             return view("/main", compact("itemDatas", "totalResults"));
             
@@ -94,6 +110,22 @@ class MonotownController extends Controller
             ];
         }
         return $items;
+    }
+
+
+    private function instgramDataFormater($ig_datas) {
+        $image_datas = [];
+        if(empty($ig_datas)) {
+            return [];
+        }
+
+        foreach($ig_datas["data"] as $data) {
+            $image_datas[] = [
+                "image" => $data["children"]["data"]["0"]["media_url"],
+                "page_url" => $data["children"]["data"]["0"]["permalink"]
+            ];
+        }
+        return $image_datas;
     }
 
 

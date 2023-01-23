@@ -8,7 +8,7 @@
 
 /* aside */
 .search-sidebar {
-    width: 200px;
+    width: 16%;
     float: left;
 }
 
@@ -20,7 +20,7 @@
 
 /* main */
 .sale {
-    width: 800px;
+    width: 64%;
 }
 
 .sale__list {
