@@ -79,7 +79,7 @@ class MonotownController extends Controller
             // exit;
 
 
-            return view("/main", compact("itemDatas", "totalResults"));
+            return view("/main", compact("itemDatas", "totalResults", "hashtagDatas"));
             
         } catch (Exception $e) {
             abort(404);

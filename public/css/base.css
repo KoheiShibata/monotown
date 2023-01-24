@@ -127,6 +127,10 @@ a {
     font-size: 32px;
 }
 
+.post__title {
+    font-size: 24px;
+}
+
 .common__title {
     font-weight: bold;
     font-size: 16px;
@@ -174,6 +178,10 @@ a {
 
 
     .total-result span {
+        font-size: 20px;
+    }
+
+    .post__title {
         font-size: 20px;
     }
 
