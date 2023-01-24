@@ -42,7 +42,7 @@
                 <p class="common__title"><img src="{{ asset('/storage/img/mens-mark.png') }}" alt="">メンズブランド</p>
                 <ul class="common__list">
                     @foreach(config(MENS_BRAND) as $key => $mensBrandName)
-                    <a href="/monotown?mensBrand={{ $key }}">
+                    <a href="/monotown?mensBrand={{ $key }}&hashtag={{ $mensBrandName }}">
                         <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
                             {{ $mensBrandName }}
                         </li>
@@ -77,7 +77,7 @@
             </ul>
         </section>
         <section class="post">
-            <h2 class="post__title"><img src="{{ asset('/storage/img/instagram-icon-1.png') }}" alt=""><span>関連ファッションまとめ</span></h2>
+            <h2 class="post__title"><img src="{{ asset('/storage/img/instagram-icon-1.png') }}" alt=""><span>公式アカウント投稿</span></h2>
             <ul class="post__list">
                 @foreach($hashtagDatas as $data)
                 <li class="post__item">

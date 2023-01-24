@@ -25,63 +25,62 @@ class MonotownController extends Controller
             );
 
             $yahoo_url = YAHOO_API;
-            // $ig_json = file_get_contents(TEST_IG_URL, false, $context);
-            // $ig_datas = json_decode($ig_json, true);
-            
-            
-            // file_put_contents("instagram.json", print_r($ig_json, true), LOCK_EX);
-            $ig_json = file_get_contents("instagram.json", false, $context);
-            $ig_datas = json_decode($ig_json, true);
+            // $ig_json = file_get_contents(INSTAGRAM_API_URL.CLEL_QUERY.ACCESS_TOKEN, false, $context);
 
-            
-            
-            // $json = file_get_contents($yahoo_url."&brand_id=58989", false, $context);
-            // $datas = json_decode($json, true);
-            
-            if($request->has("condition") == true) {
+
+            // file_put_contents("instagram/CLEL.json", print_r($ig_json, true), LOCK_EX);
+            // exit;
+            // $instagram_datas = json_decode($instagram_json, true);
+            $fileName = "instagram/remer.json";
+
+            if ($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
             }
 
-            if($request->has("mensBrand") == true) {
+            if ($request->has("mensBrand") == true) {
                 $request->session()->put("mensBrand", $request->mensBrand);
             }
 
-            if($request->has("sort") == true) {
+            if ($request->has("sort") == true) {
                 $request->session()->put("sort", $request->sort);
             }
 
-            if($request->session()->has("condition") == true) {
+            if ($request->session()->has("condition") == true) {
                 $yahoo_url .= "&{$request->session()->get('condition')}";
             }
 
-            if($request->session()->has("mensBrand") == true) {
+            if ($request->session()->has("mensBrand") == true) {
                 $yahoo_url .= "&{$request->session()->get('mensBrand')}";
             }
 
-            if($request->session()->has("sort") == true) {
+            if ($request->session()->has("sort") == true) {
                 $sort_encode = urlencode($request->session()->get("sort"));
                 $yahoo_url .= "&sort={$sort_encode}";
             }
 
-            $json = file_get_contents($yahoo_url, false, $context);
-            $datas = json_decode($json, true);
-            
-            
-            if (array_key_exists("Error", $datas)) {
+            $yahoo_json = file_get_contents($yahoo_url, false, $context);
+            $yahoo_datas = json_decode($yahoo_json, true);
+
+
+            if (array_key_exists("Error", $yahoo_datas)) {
                 throw new \Exception();
             }
 
-            $totalResults = $datas["totalResultsReturned"];
-            $itemDatas = $this->dataformater($datas);
+            $totalResults = $yahoo_datas["totalResultsReturned"];
+            $itemDatas = $this->dataformater($yahoo_datas);
 
-            $hashtagDatas = $this->instgramDataFormater($ig_datas);
+            $instagram_json = file_get_contents($fileName, false, $context);
+            $instagram_datas = json_decode($instagram_json, true);
+            // print_r($instagram_datas);
+            // exit;
+            $hashtagDatas = $this->instgramDataFormater($instagram_datas);
             // print_r($hashtagDatas);
             // exit;
 
-
             return view("/main", compact("itemDatas", "totalResults", "hashtagDatas"));
-            
         } catch (Exception $e) {
+            echo $e;
+            exit;
             abort(404);
         }
     }
@@ -93,16 +92,16 @@ class MonotownController extends Controller
      * @param array|null $datas
      * @return array
      */
-    private function dataformater($datas): array
+    private function dataformater($yahoo_datas): array
     {
         $items = [];
-        if (empty($datas)) {
+        if (empty($yahoo_datas)) {
             return [];
         }
 
-        foreach($datas["hits"] as $data) {
+        foreach ($yahoo_datas["hits"] as $data) {
             $items[] = [
-                "price" => "¥".number_format($data["price"]),
+                "price" => "¥" . number_format($data["price"]),
                 "image" => $data['exImage']['url'],
                 "url" =>  $data['url'],
                 "condition" => $data["condition"],
@@ -113,21 +112,25 @@ class MonotownController extends Controller
     }
 
 
-    private function instgramDataFormater($ig_datas) {
+    private function instgramDataFormater($instagram_datas)
+    {
         $image_datas = [];
-        if(empty($ig_datas)) {
+        if (empty($instagram_datas)) {
             return [];
         }
 
-        foreach($ig_datas["data"] as $data) {
-            $image_datas[] = [
-                "image" => $data["children"]["data"]["0"]["media_url"],
-                "page_url" => $data["children"]["data"]["0"]["permalink"]
-            ];
+        foreach ($instagram_datas["business_discovery"]["media"]["data"] as $data) {
+            if ($data["media_type"] !== "VIDEO") {
+                $image_datas[] = [
+                    "image" => $data["media_url"],
+                    "page_url" => $data["permalink"]
+                ];
+            }
+
+            if(count($image_datas) == 8) {
+                break;
+            }
         }
         return $image_datas;
     }
-
-
-    
 }
