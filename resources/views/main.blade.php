@@ -79,7 +79,7 @@
         <section class="post">
             <h2 class="post__title"><img src="{{ asset('/storage/img/instagram-icon-1.png') }}" alt=""><span>公式アカウント投稿</span></h2>
             <ul class="post__list">
-                @foreach($hashtagDatas as $data)
+                @foreach($postDatas as $data)
                 <li class="post__item">
                     <a href="{{ $data['page_url'] }}">
                         <img src="{{ $data['image'] }}" alt="">

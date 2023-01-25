@@ -25,13 +25,8 @@ class MonotownController extends Controller
             );
 
             $yahoo_url = YAHOO_API;
-            // $ig_json = file_get_contents(INSTAGRAM_API_URL.LOOSE_QUERY.ACCESS_TOKEN, false, $context);
-
-
-            // file_put_contents("instagram/Loose.json", print_r($ig_json, true), LOCK_EX);
-            // exit;
-            // $instagram_datas = json_decode($instagram_json, true);
             $fileName = "instagram/LILL.json";
+            $brand_query = "&brand_id=58989";
 
             if ($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
@@ -45,7 +40,7 @@ class MonotownController extends Controller
                 $request->session()->put("sort", $request->sort);
             }
 
-            if($request->has("name") == true) {
+            if ($request->has("name") == true) {
                 $request->session()->put("name", $request->name);
             }
 
@@ -54,7 +49,7 @@ class MonotownController extends Controller
             }
 
             if ($request->session()->has("mensBrand") == true) {
-                $yahoo_url .= "&{$request->session()->get('mensBrand')}";
+                $brand_query = "&{$request->session()->get('mensBrand')}";
             }
 
             if ($request->session()->has("sort") == true) {
@@ -62,14 +57,12 @@ class MonotownController extends Controller
                 $yahoo_url .= "&sort={$sort_encode}";
             }
 
-            if($request->session()->has("name") == true) {
+            if ($request->session()->has("name") == true) {
                 $fileName = "instagram/{$request->session()->get('name')}.json";
             }
 
-            $yahoo_json = file_get_contents($yahoo_url, false, $context);
+            $yahoo_json = file_get_contents($yahoo_url . $brand_query, false, $context);
             $yahoo_datas = json_decode($yahoo_json, true);
-            // print_r($yahoo_datas);
-            // exit;
 
             $instagram_json = file_get_contents($fileName, false, $context);
             $instagram_datas = json_decode($instagram_json, true);
@@ -80,10 +73,10 @@ class MonotownController extends Controller
             }
 
             $totalResults = $yahoo_datas["totalResultsReturned"];
-            $itemDatas = $this->dataformater($yahoo_datas);
-            $hashtagDatas = $this->instgramDataFormater($instagram_datas);
+            $itemDatas = $this->yahooDataFormater($yahoo_datas);
+            $postDatas = $this->instgramDataFormater($instagram_datas);
 
-            return view("/main", compact("itemDatas", "totalResults", "hashtagDatas"));
+            return view("/main", compact("itemDatas", "totalResults", "postDatas"));
         } catch (Exception $e) {
             abort(404);
         }
@@ -96,7 +89,7 @@ class MonotownController extends Controller
      * @param array|null $datas
      * @return array
      */
-    private function dataformater($yahoo_datas): array
+    private function yahooDataFormater($yahoo_datas): array
     {
         $items = [];
         if (empty($yahoo_datas)) {
@@ -104,7 +97,7 @@ class MonotownController extends Controller
         }
 
         foreach ($yahoo_datas["hits"] as $data) {
-            if(strpos($data["exImage"]["url"], "noimage") !== false) {
+            if (strpos($data["exImage"]["url"], "noimage") !== false) {
                 continue;
             }
             $items[] = [
@@ -125,23 +118,23 @@ class MonotownController extends Controller
      */
     private function instgramDataFormater($instagram_datas): array
     {
-        $image_datas = [];
+        $post_datas = [];
         if (empty($instagram_datas)) {
             return [];
         }
 
         foreach ($instagram_datas["business_discovery"]["media"]["data"] as $data) {
             if ($data["media_type"] !== "VIDEO") {
-                $image_datas[] = [
+                $post_datas[] = [
                     "image" => $data["media_url"],
                     "page_url" => $data["permalink"]
                 ];
             }
 
-            if(count($image_datas) == 8) {
+            if (count($post_datas) == 8) {
                 break;
             }
         }
-        return $image_datas;
+        return $post_datas;
     }
 }
