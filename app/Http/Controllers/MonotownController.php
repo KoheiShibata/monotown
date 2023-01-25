@@ -25,46 +25,58 @@ class MonotownController extends Controller
             );
 
             $yahoo_url = YAHOO_API;
-            $json = file_get_contents($yahoo_url."&brand_id=58989", false, $context);
-            $datas = json_decode($json, true);
-            
-            if($request->has("condition") == true) {
+            $fileName = "instagram/LILL.json";
+            $brand_query = "&brand_id=58989";
+
+            if ($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
             }
 
-            if($request->has("mensBrand") == true) {
+            if ($request->has("mensBrand") == true) {
                 $request->session()->put("mensBrand", $request->mensBrand);
             }
 
-            if($request->has("sort") == true) {
+            if ($request->has("sort") == true) {
                 $request->session()->put("sort", $request->sort);
             }
 
-            if($request->session()->has("condition") == true) {
+            if ($request->has("name") == true) {
+                $request->session()->put("name", $request->name);
+            }
+
+            if ($request->session()->has("condition") == true) {
                 $yahoo_url .= "&{$request->session()->get('condition')}";
             }
 
-            if($request->session()->has("mensBrand") == true) {
-                $yahoo_url .= "&{$request->session()->get('mensBrand')}";
+            if ($request->session()->has("mensBrand") == true) {
+                $brand_query = "&{$request->session()->get('mensBrand')}";
             }
 
-            if($request->session()->has("sort") == true) {
+            if ($request->session()->has("sort") == true) {
                 $sort_encode = urlencode($request->session()->get("sort"));
                 $yahoo_url .= "&sort={$sort_encode}";
             }
-            $json = file_get_contents($yahoo_url, false, $context);
-            $datas = json_decode($json, true);
-            
-            
-            if (array_key_exists("Error", $datas)) {
+
+            if ($request->session()->has("name") == true) {
+                $fileName = "instagram/{$request->session()->get('name')}.json";
+            }
+
+            $yahoo_json = file_get_contents($yahoo_url . $brand_query, false, $context);
+            $yahoo_datas = json_decode($yahoo_json, true);
+
+            $instagram_json = file_get_contents($fileName, false, $context);
+            $instagram_datas = json_decode($instagram_json, true);
+
+
+            if (array_key_exists("Error", $yahoo_datas)) {
                 throw new \Exception();
             }
 
-            $totalResults = $datas["totalResultsReturned"];
-            $itemDatas = $this->dataformater($datas);
+            $totalResults = $yahoo_datas["totalResultsReturned"];
+            $itemDatas = $this->yahooDataFormater($yahoo_datas);
+            $postDatas = $this->instgramDataFormater($instagram_datas);
 
-            return view("/main", compact("itemDatas", "totalResults"));
-            
+            return view("/main", compact("itemDatas", "totalResults", "postDatas"));
         } catch (Exception $e) {
             abort(404);
         }
@@ -72,30 +84,57 @@ class MonotownController extends Controller
 
 
     /**
-     * viewに必要なデータを抽出する
+     * yahoo_api表示に必要なデータをフォーマット
      *
      * @param array|null $datas
      * @return array
      */
-    private function dataformater($datas): array
+    private function yahooDataFormater($yahoo_datas): array
     {
         $items = [];
-        if (empty($datas)) {
+        if (empty($yahoo_datas)) {
             return [];
         }
 
-        foreach($datas["hits"] as $data) {
+        foreach ($yahoo_datas["hits"] as $data) {
+            if (strpos($data["exImage"]["url"], "noimage") !== false) {
+                continue;
+            }
             $items[] = [
-                "price" => "¥".number_format($data["price"]),
+                "price" => "¥" . number_format($data["price"]),
                 "image" => $data['exImage']['url'],
                 "url" =>  $data['url'],
                 "condition" => $data["condition"],
-                "sale_price" => $data['priceLabel']['discountedPrice'],
             ];
         }
         return $items;
     }
 
+    /**
+     * instagram_api表示に必要なデータをフォーマット
+     *
+     * @param [type] $instagram_datas
+     * @return array
+     */
+    private function instgramDataFormater($instagram_datas): array
+    {
+        $post_datas = [];
+        if (empty($instagram_datas)) {
+            return [];
+        }
 
-    
+        foreach ($instagram_datas["business_discovery"]["media"]["data"] as $data) {
+            if ($data["media_type"] !== "VIDEO") {
+                $post_datas[] = [
+                    "image" => $data["media_url"],
+                    "page_url" => $data["permalink"]
+                ];
+            }
+
+            if (count($post_datas) == 8) {
+                break;
+            }
+        }
+        return $post_datas;
+    }
 }

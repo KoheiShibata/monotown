@@ -26,7 +26,7 @@
                     @endforeach
                 </ul>
             </li>
-            <li class="common__search-sidebar common__search-sidebar--end">
+            <li class="common__search-sidebar">
                 <p class="common__title">価格</p>
                 <ul class="common__list">
                     @foreach(config(SORT) as $key => $sortName)
@@ -42,7 +42,7 @@
                 <p class="common__title"><img src="{{ asset('/storage/img/mens-mark.png') }}" alt="">メンズブランド</p>
                 <ul class="common__list">
                     @foreach(config(MENS_BRAND) as $key => $mensBrandName)
-                    <a href="/monotown?mensBrand={{ $key }}">
+                    <a href="/monotown?mensBrand={{ $key }}&name={{ $mensBrandName }}">
                         <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
                             {{ $mensBrandName }}
                         </li>
@@ -50,7 +50,7 @@
                     @endforeach
                 </ul>
             </li>
-            <li class="common__search-sidebar">
+            <li class="common__search-sidebar common__search-sidebar--end">
                 <p class="common__title"><img src="{{ asset('/storage/img/woman-mark.png') }}" alt="">レディースブランド</p>
                 <ul class="common__list">
                     @foreach(config(MENS_BRAND) as $key => $brandName)
@@ -63,20 +63,31 @@
         </ul>
     </aside>
 
-    <main class="sale">
-        <ul class="sale__list">
-            @foreach($itemDatas as $data)
-            <li class="sale__item">
-                <!-- <a href="{{ $data['url'] }}">
-                </a> -->
-                <a href="{{ $data['url'] }}">
-                    <img src="{{ $data['image'] }}" alt="">
-                    <p class="{{ $data['sale_price'] !== null ? 'color--red' : '' }}">{{ $data["price"] }}</p>
-                </a>
-            </li>
-            @endforeach
-        </ul>
+    <main class="main">
+        <section class="sale">
+            <ul class="sale__list">
+                @foreach($itemDatas as $data)
+                <li class="sale__item">
+                    <a href="{{ $data['url'] }}">
+                        <img src="{{ $data['image'] }}" alt="">
+                        <p class="{{ $data['condition'] == 'used' ? 'color--red' : '' }}">{{ $data["price"] }}</p>
+                    </a>
+                </li>
+                @endforeach
+            </ul>
+        </section>
+        <section class="post">
+            <h2 class="post__title"><img src="{{ asset('/storage/img/instagram-icon-1.png') }}" alt=""><span>公式アカウント投稿</span></h2>
+            <ul class="post__list">
+                @foreach($postDatas as $data)
+                <li class="post__item">
+                    <a href="{{ $data['page_url'] }}">
+                        <img src="{{ $data['image'] }}" alt="">
+                    </a>
+                </li>
+                @endforeach
+            </ul>
+        </section>
     </main>
-
 </section>
 @endsection
