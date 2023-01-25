@@ -25,13 +25,13 @@ class MonotownController extends Controller
             );
 
             $yahoo_url = YAHOO_API;
-            // $ig_json = file_get_contents(INSTAGRAM_API_URL.CLEL_QUERY.ACCESS_TOKEN, false, $context);
+            // $ig_json = file_get_contents(INSTAGRAM_API_URL.LOOSE_QUERY.ACCESS_TOKEN, false, $context);
 
 
-            // file_put_contents("instagram/CLEL.json", print_r($ig_json, true), LOCK_EX);
+            // file_put_contents("instagram/Loose.json", print_r($ig_json, true), LOCK_EX);
             // exit;
             // $instagram_datas = json_decode($instagram_json, true);
-            $fileName = "instagram/remer.json";
+            $fileName = "instagram/LILL.json";
 
             if ($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
@@ -43,6 +43,10 @@ class MonotownController extends Controller
 
             if ($request->has("sort") == true) {
                 $request->session()->put("sort", $request->sort);
+            }
+
+            if($request->has("name") == true) {
+                $request->session()->put("name", $request->name);
             }
 
             if ($request->session()->has("condition") == true) {
@@ -58,8 +62,17 @@ class MonotownController extends Controller
                 $yahoo_url .= "&sort={$sort_encode}";
             }
 
+            if($request->session()->has("name") == true) {
+                $fileName = "instagram/{$request->session()->get('name')}.json";
+            }
+
             $yahoo_json = file_get_contents($yahoo_url, false, $context);
             $yahoo_datas = json_decode($yahoo_json, true);
+            // print_r($yahoo_datas);
+            // exit;
+
+            $instagram_json = file_get_contents($fileName, false, $context);
+            $instagram_datas = json_decode($instagram_json, true);
 
 
             if (array_key_exists("Error", $yahoo_datas)) {
@@ -68,26 +81,17 @@ class MonotownController extends Controller
 
             $totalResults = $yahoo_datas["totalResultsReturned"];
             $itemDatas = $this->dataformater($yahoo_datas);
-
-            $instagram_json = file_get_contents($fileName, false, $context);
-            $instagram_datas = json_decode($instagram_json, true);
-            // print_r($instagram_datas);
-            // exit;
             $hashtagDatas = $this->instgramDataFormater($instagram_datas);
-            // print_r($hashtagDatas);
-            // exit;
 
             return view("/main", compact("itemDatas", "totalResults", "hashtagDatas"));
         } catch (Exception $e) {
-            echo $e;
-            exit;
             abort(404);
         }
     }
 
 
     /**
-     * viewに必要なデータを抽出する
+     * yahoo_api表示に必要なデータをフォーマット
      *
      * @param array|null $datas
      * @return array
@@ -100,19 +104,26 @@ class MonotownController extends Controller
         }
 
         foreach ($yahoo_datas["hits"] as $data) {
+            if(strpos($data["exImage"]["url"], "noimage") !== false) {
+                continue;
+            }
             $items[] = [
                 "price" => "¥" . number_format($data["price"]),
                 "image" => $data['exImage']['url'],
                 "url" =>  $data['url'],
                 "condition" => $data["condition"],
-                "sale_price" => $data['priceLabel']['discountedPrice'],
             ];
         }
         return $items;
     }
 
-
-    private function instgramDataFormater($instagram_datas)
+    /**
+     * instagram_api表示に必要なデータをフォーマット
+     *
+     * @param [type] $instagram_datas
+     * @return array
+     */
+    private function instgramDataFormater($instagram_datas): array
     {
         $image_datas = [];
         if (empty($instagram_datas)) {

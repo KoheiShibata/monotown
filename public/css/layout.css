@@ -12,6 +12,12 @@
     z-index: 1;
 }
 
+.header-logo {
+    width: 1100px;
+    margin: auto;
+    padding-left: 8px;
+}
+
 .hamburger__btn {
     display: none;
 }
@@ -35,7 +41,8 @@
     }
 
     .header-logo {
-        margin: 5px 0;
+        width: inherit;
+        margin: inherit;
     }
 
     .header-logo p {
@@ -92,10 +99,10 @@
     }
 
     .nav-search__item {
-        padding: 16px 50px;
+        padding: 16px 48px;
     }
 
-    .nav-search__item input {
-        display: none;
+    .nav-search__item--checked {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 }

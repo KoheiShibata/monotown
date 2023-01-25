@@ -13,5 +13,5 @@ define("YU_QUERY", "17841457502307817?fields=business_discovery.username(aaxxy2)
 define("LILL_QUERY", "17841457502307817?fields=business_discovery.username(lill_official)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");
 define("CUSSIL_QUERY", "17841457502307817?fields=business_discovery.username(cussil_official)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");
 define("REMER_QUERY", "17841457502307817?fields=business_discovery.username(remer_official)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");
-define("LOOSE_QUERY", "17841457502307817?fields=business_discovery.username(loose_official)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");
+define("LOOSE_QUERY", "17841457502307817?fields=business_discovery.username(loose_official_)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");
 define("CLEL_QUERY", "17841457502307817?fields=business_discovery.username(clel_official)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");

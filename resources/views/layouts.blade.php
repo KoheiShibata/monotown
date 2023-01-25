@@ -16,23 +16,21 @@
 
 <body>
     <header class="header">
-        
-        <div class="header-logo">
-            <p>MONOTOWN</p>
-        </div>
-
-        <!-- hamburger -->
+            <div class="header-logo">
+                <p>MONOTOWN</p>
+            </div>
+            <!-- hamburger -->
             <span class="hamburger__btn" id="hamburger__btn"></span>
     </header>
 
     <nav class="nav-search">
         <ul class="nav-search__menu">
             @foreach(config(CONDITION) as $key => $conditionName)
-            <li class="nav-search__item">
-                <label class="condition__label" for="condition">
-                    <input type="radio" name="condition" value="{{ $key }}">{{ $conditionName }}
-                </label>
-            </li>
+            <a href="/monotown?condition={{ $key }}">
+                <li class="nav-search__item {{ session('condition') == $key ? 'nav-search__item--checked' : '' }}">
+                    {{ $conditionName }}
+                </li>
+            </a>
             @endforeach
         </ul>
     </nav>

@@ -42,7 +42,7 @@
                 <p class="common__title"><img src="{{ asset('/storage/img/mens-mark.png') }}" alt="">メンズブランド</p>
                 <ul class="common__list">
                     @foreach(config(MENS_BRAND) as $key => $mensBrandName)
-                    <a href="/monotown?mensBrand={{ $key }}&hashtag={{ $mensBrandName }}">
+                    <a href="/monotown?mensBrand={{ $key }}&name={{ $mensBrandName }}">
                         <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
                             {{ $mensBrandName }}
                         </li>
@@ -70,7 +70,7 @@
                 <li class="sale__item">
                     <a href="{{ $data['url'] }}">
                         <img src="{{ $data['image'] }}" alt="">
-                        <p class="{{ $data['sale_price'] !== null ? 'color--red' : '' }}">{{ $data["price"] }}</p>
+                        <p class="{{ $data['condition'] == 'used' ? 'color--red' : '' }}">{{ $data["price"] }}</p>
                     </a>
                 </li>
                 @endforeach

@@ -55,14 +55,14 @@
 }
 
 .post {
-    padding-top: 40px;
+    padding-top: 24px;
 }
 
 .post__list {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 2px;
-    margin: 0px 10px;
+    column-gap: 2.5px;
+    margin: 0px 15px;
 }
 
 .post__title {
@@ -77,13 +77,17 @@
     width: 30px;
 }
 
+.post__title span {
+    opacity: 0.5;
+}
+
 .post__item {
     width: calc(25% - 2px);
 }
 
 .post__item img {
     width: 100%;
-    height: 230px;
+    height: 220px;
     object-fit: cover;
 }
 
@@ -129,8 +133,12 @@
         width: 50%;
     }
 
+    .post__title img {
+        width: 24px;
+    }
+
     .post__item {
-        width: calc(50% - 7.5px);
+        width: calc(50% - 2px);
     }
 
     .post__item img {
