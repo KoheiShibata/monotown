@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MonotownController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,9 @@ Route::get('/', function () {
 
 Route::controller(MonotownController::class)->prefix("monotown")->group(function () {
     Route::get("/", "monotown");
+});
+
+Route::controller(ContactController::class)->prefix("contact")->group(function () {
+    Route::get("/", "contact");
+    Route::post("/", "send");
 });
