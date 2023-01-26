@@ -1,5 +1,68 @@
+.header-logo {
+    width: 700px;
+    padding-left: 5px;
+}
+
 .contact-form {
-    width: 600px;
+    width: 700px;
     margin: auto;
-    margin-top: 55px;
+    margin-top: 60px;
+    padding: 10px 25px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.contact-form__title {
+    font-size: 20px;
+    opacity: 0.6;
+}
+
+.contact-form__label {
+    width: 650px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px dotted rgba(0, 0, 0, 0.2);
+}
+
+.required::after {
+    content: " *";
+    color: red;
+    vertical-align: middle;
+}
+
+.error-message {
+    color: #dc3232;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.btn-area {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.btn__submit {
+    color: black;
+    border: 1px solid black;
+    background-color: white;
+    padding: 15px 60px;
+    border-radius: 5px;
+}
+
+.btn__submit:hover {
+    background-color: #AAAAAA;
+    transition: 0.8s;
+}
+
+
+@media screen and (max-width: 480px) {
+    .nav-search {
+        display: none;
+    }
+
+    .hamburger__btn {
+        display: none;
+    }
 }
