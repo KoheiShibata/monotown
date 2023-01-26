@@ -10,7 +10,8 @@
 <section class="contact-form">
     <h2 class="contact-form__title">お問い合わせ</h2>
     <div class="contact-form-wrap">
-        <form action="">
+        <form action="/contact" method="post">
+            @csrf
             <div class="form-group">
                 <label for="name" class="contact-form__label">お名前</label><br>
                 <input type="text" name="name" id="name" value="" class="form-control">

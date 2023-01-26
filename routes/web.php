@@ -27,5 +27,6 @@ Route::controller(MonotownController::class)->prefix("monotown")->group(function
 
 Route::controller(ContactController::class)->prefix("contact")->group(function () {
     Route::get("/", "contact");
+    // Route::post("/", "confirm");
     Route::post("/", "send");
 });
