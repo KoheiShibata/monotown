@@ -1,7 +1,4 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
     position: fixed;
     height: 50px;
     border-bottom: solid 1px #cfcfcf;
@@ -12,10 +9,23 @@
     z-index: 1;
 }
 
-.header-logo {
+.header-nav {
     width: 1100px;
     margin: auto;
     padding-left: 8px;
+}
+
+.header__list {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.header__item--contact {
+    padding: 10px 20px;
+    border-radius: 8px;
 }
 
 .hamburger__btn {
@@ -40,13 +50,22 @@
         height: 40px;
     }
 
-    .header-logo {
-        width: inherit;
+    .header-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        width: 100%;
         margin: inherit;
+        height: 40px;
     }
 
-    .header-logo p {
-        text-align: center;
+    .header__list {
+        height: 40px;
+    }
+
+    .header__item--contact {
+        display: none;
     }
 
 
