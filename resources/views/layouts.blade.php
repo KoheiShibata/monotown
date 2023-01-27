@@ -36,6 +36,12 @@
         </nav>
     </header>
 
+    @if (session('successMessage'))
+    <div class="contact__message" id="contact-message">
+        {{ session('successMessage') }}
+    </div>
+    @endif
+    
     <nav class="nav-search">
         <ul class="nav-search__menu">
             @foreach(config(CONDITION) as $key => $conditionName)
@@ -54,7 +60,13 @@
         <p>© 2023 s-kohei monotown</p>
     </footer>
 
+    <!-- js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{asset('/js/hamburgerMenu.js')}}"></script>
+    <script src="{{asset('/js/contactSuccess.js')}}"></script>
+
+    @yield("js")
+
 </body>
 
 </html>

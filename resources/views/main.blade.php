@@ -63,7 +63,7 @@
             <li class="common__search-sidebar common__search-sidebar--end">
                 <ul class="common__list common__list--contact">
                     <li class="common__name">
-                        <a href="/contact">お問い合わせ</a> 
+                        <a href="/contact">お問い合わせ</a>
                     </li>
                 </ul>
             </li>

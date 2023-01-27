@@ -17,10 +17,13 @@ class ContactController extends Controller
 
 
 
-    public function send(Request $request) 
+    public function send(Request $request)
     {
         $contact = $request->validate(config(CONTACT_VALIDATE));
         Mail::to("kohei.techis@gmail.com")->send(new ContactSendmail($contact));
+
+        $request->session()->flush();
+        return redirect("/monotown")->with("successMessage", "お問い合わせありがとうございました。");
     }
 
 

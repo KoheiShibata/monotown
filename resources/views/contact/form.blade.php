@@ -10,7 +10,7 @@
 <section class="contact-form">
     <h2 class="contact-form__title">お問い合わせフォーム</h2>
     <div class="contact-form-wrap">
-        <form action="/contact" method="post">
+        <form action="/contact" method="post" name="contactForm">
             @csrf
             <div class="form-group">
                 <label for="name" class="contact-form__label required">お名前</label><br>
@@ -33,10 +33,15 @@
                 <p class="error-message">{{ $errors->first("content") }}</p>
                 @endif
             </div>
-            <div class="btn-area">
-                <button type="submit" class="btn__submit">送信</button>
+            <div class="btn-area" id="btn-area">
+                <button type="button" id="btn-submit-contact" class="btn__submit">送信</button>
             </div>
         </form>
     </div>
 </section>
+@endsection
+
+
+@section("js")
+<script src="{{ asset('js/sweetAlert.js') }}"></script>
 @endsection
