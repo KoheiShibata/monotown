@@ -18,6 +18,9 @@ btnSubmitContact.addEventListener("click", function () {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
+            btnSubmitContact.style.display = "none"
+            const formLoading = document.getElementById("loading-gif")
+            formLoading.className = "loading__gif--active"
             document.contactForm.submit()
         } else {
             return false

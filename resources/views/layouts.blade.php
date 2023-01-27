@@ -37,11 +37,11 @@
     </header>
 
     @if (session('successMessage'))
-    <div class="contact__message" id="contact-message">
+    <div class="contact__message--success" id="contact-message">
         {{ session('successMessage') }}
     </div>
     @endif
-    
+
     <nav class="nav-search">
         <ul class="nav-search__menu">
             @foreach(config(CONDITION) as $key => $conditionName)

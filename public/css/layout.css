@@ -36,7 +36,7 @@
     display: none;
 }
 
-.contact__message {
+.contact__message--success {
     position: fixed;
     background-color: #AAAAAA;
     font-size: 15px;
@@ -47,7 +47,7 @@
     visibility: hidden;
     opacity: 0;
     top: -20px;
-    left: 50%;
+    left: 48%;
     z-index: 10;
     transition: 0.5s;
 }
@@ -56,8 +56,9 @@
 .contact__message--active {
     visibility: visible;
     opacity: 1;
-    top: 0;
+    margin-top: 5px;
     z-index: 10;
+    top: 0;
     transition: 0.5s;
 }
 

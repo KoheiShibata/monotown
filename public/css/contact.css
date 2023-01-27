@@ -67,6 +67,15 @@
     transition: 0.8s;
 }
 
+.loading__gif--hidden {
+    display: none;
+}
+
+.loading__gif--active {
+    display: block;
+    margin: auto;
+}
+
 
 @media screen and (max-width: 480px) {
     .header-nav {
