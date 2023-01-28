@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="shortcut icon" sizes="480x480" href="{{ asset('/storage/img/monotown-logo4.png') }}">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/layout.css">
@@ -16,12 +18,29 @@
 
 <body>
     <header class="header">
-            <div class="header-logo">
-                <p>MONOTOWN</p>
-            </div>
+        <nav class="header-nav">
+            <ul class="header__list">
+                <li class="header__item">
+                    <div class="header-logo">
+                        <a href="/monotown">
+                            <p>MONOTOWN</p>
+                        </a>
+                    </div>
+                </li>
+                <li class="header__item header__item--contact">
+                    <a href="/contact">お問い合わせ</a>
+                </li>
+            </ul>
             <!-- hamburger -->
             <span class="hamburger__btn" id="hamburger__btn"></span>
+        </nav>
     </header>
+
+    @if (session('successMessage'))
+    <div class="contact__message--success" id="contact-message">
+        {{ session('successMessage') }}
+    </div>
+    @endif
 
     <nav class="nav-search">
         <ul class="nav-search__menu">
@@ -41,7 +60,13 @@
         <p>© 2023 s-kohei monotown</p>
     </footer>
 
+    <!-- js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{asset('/js/hamburgerMenu.js')}}"></script>
+    <script src="{{asset('/js/contactSuccess.js')}}"></script>
+
+    @yield("js")
+
 </body>
 
 </html>

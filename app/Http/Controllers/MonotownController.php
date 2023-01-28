@@ -23,7 +23,7 @@ class MonotownController extends Controller
                     ]
                 ]
             );
-
+            
             $yahoo_url = YAHOO_API;
             $fileName = "instagram/LILL.json";
             $brand_query = "&brand_id=58989";

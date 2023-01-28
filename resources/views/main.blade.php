@@ -39,7 +39,7 @@
                 </ul>
             </li>
             <li class="common__search-sidebar">
-                <p class="common__title"><img src="{{ asset('/storage/img/mens-mark.png') }}" alt="">メンズブランド</p>
+                <p class="common__title common__title--mens">メンズブランド</p>
                 <ul class="common__list">
                     @foreach(config(MENS_BRAND) as $key => $mensBrandName)
                     <a href="/monotown?mensBrand={{ $key }}&name={{ $mensBrandName }}">
@@ -50,14 +50,21 @@
                     @endforeach
                 </ul>
             </li>
-            <li class="common__search-sidebar common__search-sidebar--end">
-                <p class="common__title"><img src="{{ asset('/storage/img/woman-mark.png') }}" alt="">レディースブランド</p>
+            <li class="common__search-sidebar">
+                <p class="common__title common__title--woman">レディースブランド</p>
                 <ul class="common__list">
                     @foreach(config(MENS_BRAND) as $key => $brandName)
                     <li class="common__name">
                         {{ $brandName }}
                     </li>
                     @endforeach
+                </ul>
+            </li>
+            <li class="common__search-sidebar common__search-sidebar--end">
+                <ul class="common__list common__list--contact">
+                    <li class="common__name">
+                        <a href="/contact">お問い合わせ</a>
+                    </li>
                 </ul>
             </li>
         </ul>

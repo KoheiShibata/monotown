@@ -1,5 +1,6 @@
 <?php
 
+define("CONTACT_VALIDATE", "validator.contact");
 define("CONDITION", "filter.select.condition");
 define("MENS_BRAND", "filter.select.MensBrand");
 define("SORT", "filter.select.sort");

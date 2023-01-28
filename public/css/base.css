@@ -7,15 +7,18 @@ a {
     text-decoration: none;
 }
 
+.common__search-sidebar--end {
+    display: none;
+}
+
 .common__title {
     margin-bottom: 3px;
     padding-top: 20px;
     padding-left: 3px;
 }
 
-.common__title img {
-    width: 14px;
-    padding: 0 5px;
+.common__list--contact {
+    padding: 10px 0;
 }
 
 .common__name {
@@ -45,12 +48,21 @@ a {
     color: #222;
 }
 
+a:hover {
+    color: #666666;
+}
+
 .header {
     background-color: #EAEAEA;
 }
 
-.header-logo p {
+.header__item a {
     font-weight: bold;
+}
+
+.header__item--contact:hover {
+    background-color: #AAAAAA;
+    transition: 0.8s;
 }
 
 .hamburger__btn {
@@ -75,6 +87,14 @@ a {
 .common__search-sidebar {
     background: #F8F8F8;
     border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+.common__title--mens {
+    color: #000088;
+}
+
+.common__title--woman {
+    color: #880000;
 }
 
 .common__name--checked {
@@ -109,8 +129,12 @@ a {
 
 
 /* font */
-.header-logo p {
+.header-logo a {
     font-size: 24px;
+}
+
+.header__item--contact {
+    font-size: 18px;
 }
 
 .footer p {
@@ -147,7 +171,8 @@ a {
 
     /* common */
     .common__search-sidebar.common__search-sidebar--end {
-        padding-bottom: 100px;
+        display: block;
+        padding-bottom: 80px;
     }
 
 
