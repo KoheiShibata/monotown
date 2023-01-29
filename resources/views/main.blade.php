@@ -82,6 +82,16 @@
                 </li>
                 @endforeach
             </ul>
+
+            <div class="page-number">
+                <ol class="page-number__list">
+                    @for($i=1; $i<=$maxPage; $i++) 
+                    <li class="page-number__item">
+                        <a href="/monotown?page={{ $i }}">{{ $i }}</a>
+                    </li>
+                    @endfor
+                </ol>
+            </div>
         </section>
         <section class="post">
             <h2 class="post__title"><img src="{{ asset('/storage/img/instagram-icon-1.png') }}" alt=""><span>公式アカウント投稿</span></h2>

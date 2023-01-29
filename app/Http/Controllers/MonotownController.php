@@ -23,10 +23,17 @@ class MonotownController extends Controller
                     ]
                 ]
             );
+
             
             $yahoo_url = YAHOO_API;
             $fileName = "instagram/LILL.json";
             $brand_query = "&brand_id=58989";
+            $page_number = 1;
+
+            if($request->has("page") == true) {
+                $request->session()->put("page", $request->page);
+                $page_number =  $request->session()->get("page");
+            }
 
             if ($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
@@ -73,11 +80,13 @@ class MonotownController extends Controller
             }
 
             $totalResults = $yahoo_datas["totalResultsReturned"];
-            $itemDatas = $this->yahooDataFormater($yahoo_datas);
+            $maxPage = ceil($totalResults / MAX);
+            $itemDatas = $this->yahooDataFormater($yahoo_datas, $page_number);
             $postDatas = $this->instgramDataFormater($instagram_datas);
 
-            return view("/main", compact("itemDatas", "totalResults", "postDatas"));
+            return view("/main", compact("itemDatas", "totalResults", "postDatas", "maxPage"));
         } catch (Exception $e) {
+            echo $e;
             abort(404);
         }
     }
@@ -89,7 +98,7 @@ class MonotownController extends Controller
      * @param array|null $datas
      * @return array
      */
-    private function yahooDataFormater($yahoo_datas): array
+    private function yahooDataFormater($yahoo_datas, $page_number): array
     {
         $items = [];
         if (empty($yahoo_datas)) {
@@ -107,6 +116,9 @@ class MonotownController extends Controller
                 "condition" => $data["condition"],
             ];
         }
+        // pagination
+        $start_key = ($page_number - 1) * MAX;
+        $items = array_slice($items, $start_key, MAX, true);
         return $items;
     }
 
@@ -138,3 +150,6 @@ class MonotownController extends Controller
         return $post_datas;
     }
 }
+
+
+
