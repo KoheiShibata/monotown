@@ -28,7 +28,7 @@
                     </div>
                 </li>
                 <li class="header__item header__item--contact">
-                    <a href="/contact">お問い合わせ</a>
+                    <a href="/contact">お問い合わせ✉</a>
                 </li>
             </ul>
             <!-- hamburger -->

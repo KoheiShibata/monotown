@@ -28,12 +28,12 @@ class MonotownController extends Controller
             $yahoo_url = YAHOO_API;
             $fileName = "instagram/LILL.json";
             $brand_query = "&brand_id=58989";
-            $page_number = 1;
+            // $page_number = 1;
 
-            if($request->has("page") == true) {
-                $request->session()->put("page", $request->page);
-                $page_number =  $request->session()->get("page");
-            }
+            // if($request->has("page") == true) {
+            //     $request->session()->put("page", $request->page);
+            //     $page_number =  $request->session()->get("page");
+            // }
 
             if ($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
@@ -80,11 +80,10 @@ class MonotownController extends Controller
             }
 
             $totalResults = $yahoo_datas["totalResultsReturned"];
-            $maxPage = ceil($totalResults / MAX);
-            $itemDatas = $this->yahooDataFormater($yahoo_datas, $page_number);
+            $itemDatas = $this->yahooDataFormater($yahoo_datas);
             $postDatas = $this->instgramDataFormater($instagram_datas);
 
-            return view("/main", compact("itemDatas", "totalResults", "postDatas", "maxPage"));
+            return view("/main", compact("itemDatas", "totalResults", "postDatas"));
         } catch (Exception $e) {
             echo $e;
             abort(404);
@@ -98,14 +97,14 @@ class MonotownController extends Controller
      * @param array|null $datas
      * @return array
      */
-    private function yahooDataFormater($yahoo_datas, $page_number): array
+    private function yahooDataFormater($yahoo_datas): array
     {
         $items = [];
         if (empty($yahoo_datas)) {
             return [];
         }
 
-        foreach ($yahoo_datas["hits"] as $data) {
+        foreach ($yahoo_datas["hits"] as $key => $data) {
             if (strpos($data["exImage"]["url"], "noimage") !== false) {
                 continue;
             }
@@ -114,11 +113,12 @@ class MonotownController extends Controller
                 "image" => $data['exImage']['url'],
                 "url" =>  $data['url'],
                 "condition" => $data["condition"],
+                "visibility" => "visible",
             ];
+            if(count($items) > MAX) {
+                $items[$key]["visibility"] = "hidden"; 
+            }
         }
-        // pagination
-        $start_key = ($page_number - 1) * MAX;
-        $items = array_slice($items, $start_key, MAX, true);
         return $items;
     }
 
