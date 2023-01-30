@@ -74,7 +74,7 @@
         <section class="sale">
             <ul class="sale__list">
                 @foreach($itemDatas as $data)
-                <li class="sale__item {{ $data['visibility'] == 'hidden' ? 'sale__item--hidden' : 'sale__item--visible' }}">
+                <li class="sale__item {{ $data['visibility'] == 'hidden' ? 'sale__item--hide' : '' }}">
                     <a href="{{ $data['url'] }}">
                         <img src="{{ $data['image'] }}" alt="">
                         <p class="{{ $data['condition'] == 'used' ? 'color--red' : '' }}">{{ $data["price"] }}</p>
@@ -83,7 +83,11 @@
                 @endforeach
             </ul>
 
-            <button class="more__btn" id="more__btn">More ></button>
+            @if(count($itemDatas) > MAX)
+            <div class="common__btn-area">
+                <button class="common__btn accodion__btn accodion__btn--open" id="accodion__btn">MORE +</button>
+            </div>
+            @endif
         </section>
         <section class="post">
             <h2 class="post__title"><img src="{{ asset('/storage/img/instagram-icon-1.png') }}" alt=""><span>公式アカウント投稿</span></h2>

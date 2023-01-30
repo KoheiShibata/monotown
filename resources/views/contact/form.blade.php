@@ -33,8 +33,8 @@
                 <p class="error-message">{{ $errors->first("content") }}</p>
                 @endif
             </div>
-            <div class="btn-area" id="btn-area">
-                <button type="button" id="btn-submit-contact" class="btn__submit">送信</button>
+            <div class="common__btn-area" id="btn-area">
+                <button type="button" id="btn-submit-contact" class="common__btn btn-submit__contact">送信</button>
                 <img src="{{ asset('/storage/img/loading-5.gif') }}" class="loading__gif--hidden" id="loading-gif" alt="">
             </div>
         </form>

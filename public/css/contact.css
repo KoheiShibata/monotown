@@ -48,23 +48,8 @@
     padding-top: 3px;
 }
 
-.btn-area {
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-.btn__submit {
-    color: black;
-    border: 1px solid black;
-    background-color: white;
+.btn-submit__contact {
     padding: 15px 60px;
-    border-radius: 5px;
-}
-
-.btn__submit:hover {
-    background-color: #BBBBBB;
-    transition: 0.8s;
 }
 
 .loading__gif--hidden {
