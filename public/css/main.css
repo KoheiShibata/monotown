@@ -1,0 +1,181 @@
+.wrapper {
+    width: 1100px;
+    margin: auto;
+    display: flex;
+    margin-top: 60px;
+}
+
+
+/* aside */
+.search-sidebar {
+    width: 18%;
+    float: left;
+}
+
+.total-result {
+    border-radius: 8px;
+    padding: 12px 5px 10px 5px;
+}
+
+
+/* main */
+.main {
+    width: 82%;
+}
+
+.main img:hover {
+    opacity: 0.6;
+    transition: 0.5s;
+}
+
+.sale {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sale__list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+.sale__item {
+    width: 25%;
+    position: relative;
+    animation: .5s fadeIn;
+}
+
+.sale__item img {
+    width: 100%;
+}
+
+.sale__item p {
+    text-decoration: none;
+    position: absolute;
+    bottom: 4.5px;
+    left: 9%;
+    padding: 2px 5px 2px 3px;
+    border-radius: 10px;
+}
+
+.sale__item--hide {
+    display: none;
+}
+
+.sale__item--show {
+    display: block;
+}
+
+.accodion__btn {
+    width: 90%;
+    padding: 6px 0;
+    opacity: 0.7;
+}
+
+.post {
+    padding-top: 24px;
+}
+
+.post__list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2.5px;
+    margin: 0px 15px;
+}
+
+.post__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding-bottom: 20px;
+}
+
+.post__title img {
+    width: 30px;
+}
+
+.post__title span {
+    opacity: 0.5;
+}
+
+.post__item {
+    width: calc(25% - 2px);
+}
+
+.post__item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+
+
+
+@media screen and (max-width: 480px) {
+    .wrapper {
+        width: 100%;
+        margin-top: 10px;
+        position: relative;
+    }
+
+    /* aside */
+    .search-sidebar {
+        visibility: hidden;
+        position: absolute;
+        position: fixed;
+        overflow: auto;
+        opacity: 0;
+        right: -30px;
+        top: 40px;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s;
+    }
+
+    .search-sidebar.search-sidebar--active {
+        visibility: visible;
+        opacity: 1;
+        z-index: 1;
+        right: 0;
+        transition: 0.5s;
+    }
+
+
+    /* main */
+    .main {
+        width: 100%;
+    }
+
+    .sale__item {
+        width: 50%;
+    }
+
+    .post__title img {
+        width: 24px;
+    }
+
+    .post__item {
+        width: calc(50% - 2px);
+    }
+
+    .post__item img {
+        height: 190px;
+    }
+
+}

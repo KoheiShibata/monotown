@@ -1,0 +1,88 @@
+.header-nav {
+    width: 700px;
+    padding-left: 5px;
+}
+
+.header__item--contact {
+    display: none;
+}
+
+.contact-form {
+    width: 700px;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    padding: 10px 25px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.contact-form__title {
+    font-size: 20px;
+    opacity: 0.6;
+}
+
+.contact-form__label {
+    width: 650px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px dotted rgba(0, 0, 0, 0.2);
+}
+
+.required::after {
+    content: " *";
+    color: red;
+    vertical-align: middle;
+}
+
+.form-control:focus {
+    color: #495057;
+    border-color: black;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.error-message {
+    color: #dc3232;
+    font-size: 14px;
+    padding-top: 3px;
+}
+
+.btn-submit__contact {
+    padding: 15px 60px;
+}
+
+.loading__gif--hidden {
+    display: none;
+}
+
+.loading__gif--active {
+    display: block;
+    margin: auto;
+}
+
+
+@media screen and (max-width: 480px) {
+    .header-nav {
+        width: 100%;
+        justify-content: center;
+        padding-left: 32px;
+    }
+
+    .nav-search {
+        display: none;
+    }
+
+    .hamburger__btn {
+        display: none;
+    }
+
+    .contact-form {
+        width: 98%;
+    }
+
+    .contact-form__label {
+        width: 98%;
+    }
+
+}

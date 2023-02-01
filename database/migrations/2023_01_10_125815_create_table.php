@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sale_item_images', function (Blueprint $table) {
-            $table->id();
+            $table->increments("id");
+            $table->integer("sale_item_id")->length(10);
+            $table->string("image_path");
+            $table->softDeletes();
             $table->timestamps();
         });
     }
