@@ -42,6 +42,7 @@
     </div>
     @endif
 
+    <!-- レスポンシブ対応メニュー -->
     <nav class="nav-search">
         <ul class="nav-search__menu">
             @foreach(config(CONDITION) as $key => $conditionName)

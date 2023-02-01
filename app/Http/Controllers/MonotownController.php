@@ -24,16 +24,13 @@ class MonotownController extends Controller
                 ]
             );
 
+            // $ig_json = file_get_contents(INSTAGRAM_API_URL.CLEL_QUERY.ACCESS_TOKEN, false, $context);
+            // file_put_contents("instagram/CLEL.json", print_r($ig_json, true), LOCK_EX);
+            // exit;
             
             $yahoo_url = YAHOO_API;
-            $fileName = "instagram/LILL.json";
+            $fileName = "instagram/yu.json";
             $brand_query = "&brand_id=58989";
-            // $page_number = 1;
-
-            // if($request->has("page") == true) {
-            //     $request->session()->put("page", $request->page);
-            //     $page_number =  $request->session()->get("page");
-            // }
 
             if ($request->has("condition") == true) {
                 $request->session()->put("condition", $request->condition);
