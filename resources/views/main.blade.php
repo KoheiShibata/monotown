@@ -37,28 +37,28 @@
                     </a>
                     @endforeach
                 </ul>
-            </li>
-            <li class="common__search-sidebar">
-                <p class="common__title common__title--mens">メンズブランド</p>
-                <ul class="common__list">
-                    @foreach(config(MENS_BRAND) as $key => $mensBrandName)
-                    <a href="/monotown?mensBrand={{ $key }}&name={{ $mensBrandName }}">
-                        <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
-                            {{ $mensBrandName }}
+                <li class="common__search-sidebar">
+                    <p class="common__title common__title--mens">メンズブランド</p>
+                    <ul class="common__list">
+                        @foreach(config(MENS_BRAND) as $key => $mensBrandName)
+                        <a href="/monotown?mensBrand={{ $key }}&name={{ $mensBrandName }}">
+                            <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
+                                {{ $mensBrandName }}
+                            </li>
+                        </a>
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="common__search-sidebar">
+                    <p class="common__title common__title--woman">レディースブランド</p>
+                    <ul class="common__list">
+                        @foreach(config(MENS_BRAND) as $key => $brandName)
+                        <li class="common__name">
+                            {{ $brandName }}
                         </li>
-                    </a>
-                    @endforeach
-                </ul>
-            </li>
-            <li class="common__search-sidebar">
-                <p class="common__title common__title--woman">レディースブランド</p>
-                <ul class="common__list">
-                    @foreach(config(MENS_BRAND) as $key => $brandName)
-                    <li class="common__name">
-                        {{ $brandName }}
-                    </li>
-                    @endforeach
-                </ul>
+                        @endforeach
+                    </ul>
+                </li>
             </li>
             <li class="common__search-sidebar common__search-sidebar--end">
                 <ul class="common__list common__list--contact">
@@ -74,7 +74,7 @@
         <section class="sale">
             <ul class="sale__list">
                 @foreach($itemDatas as $data)
-                <li class="sale__item">
+                <li class="sale__item {{ $data['visibility'] == 'hidden' ? 'sale__item--hide' : '' }}">
                     <a href="{{ $data['url'] }}">
                         <img src="{{ $data['image'] }}" alt="">
                         <p class="{{ $data['condition'] == 'used' ? 'color--red' : '' }}">{{ $data["price"] }}</p>
@@ -82,6 +82,12 @@
                 </li>
                 @endforeach
             </ul>
+
+            @if(count($itemDatas) > MAX)
+            <div class="common__btn-area">
+                <button class="common__btn accodion__btn accodion__btn--open" id="accodion__btn">MORE +</button>
+            </div>
+            @endif
         </section>
         <section class="post">
             <h2 class="post__title"><img src="{{ asset('/storage/img/instagram-icon-1.png') }}" alt=""><span>公式アカウント投稿</span></h2>
@@ -97,4 +103,8 @@
         </section>
     </main>
 </section>
+@endsection
+
+@section("js")
+<script src="{{asset('/js/accodion.js')}}"></script>
 @endsection

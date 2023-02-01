@@ -23,9 +23,13 @@ class MonotownController extends Controller
                     ]
                 ]
             );
+
+            // $ig_json = file_get_contents(INSTAGRAM_API_URL.CLEL_QUERY.ACCESS_TOKEN, false, $context);
+            // file_put_contents("instagram/CLEL.json", print_r($ig_json, true), LOCK_EX);
+            // exit;
             
             $yahoo_url = YAHOO_API;
-            $fileName = "instagram/LILL.json";
+            $fileName = "instagram/yu.json";
             $brand_query = "&brand_id=58989";
 
             if ($request->has("condition") == true) {
@@ -78,6 +82,7 @@ class MonotownController extends Controller
 
             return view("/main", compact("itemDatas", "totalResults", "postDatas"));
         } catch (Exception $e) {
+            echo $e;
             abort(404);
         }
     }
@@ -96,7 +101,7 @@ class MonotownController extends Controller
             return [];
         }
 
-        foreach ($yahoo_datas["hits"] as $data) {
+        foreach ($yahoo_datas["hits"] as $key => $data) {
             if (strpos($data["exImage"]["url"], "noimage") !== false) {
                 continue;
             }
@@ -105,7 +110,11 @@ class MonotownController extends Controller
                 "image" => $data['exImage']['url'],
                 "url" =>  $data['url'],
                 "condition" => $data["condition"],
+                "visibility" => "visible",
             ];
+            if(count($items) > MAX) {
+                $items[$key]["visibility"] = "hidden"; 
+            }
         }
         return $items;
     }
@@ -138,3 +147,6 @@ class MonotownController extends Controller
         return $post_datas;
     }
 }
+
+
+

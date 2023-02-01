@@ -41,6 +41,24 @@ a {
     display: none;
 }
 
+.common__btn-area {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.common__btn {
+    color: black;
+    border: 1px solid rgb(0, 0, 0, 0.5);
+    background-color: white;
+    border-radius: 5px;
+}
+
+.common__btn:hover {
+    background-color: #BBBBBB;
+    transition: 0.8s;
+}
+
 
 
 /* color */
