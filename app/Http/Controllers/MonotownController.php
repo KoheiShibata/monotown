@@ -24,8 +24,8 @@ class MonotownController extends Controller
                 ]
             );
 
-            // $ig_json = file_get_contents(INSTAGRAM_API_URL.CLEL_QUERY.ACCESS_TOKEN, false, $context);
-            // file_put_contents("instagram/CLEL.json", print_r($ig_json, true), LOCK_EX);
+            // $ig_json = file_get_contents(INSTAGRAM_API_URL.REMER_QUERY.ACCESS_TOKEN, false, $context);
+            // file_put_contents("instagram/remer.json", print_r($ig_json, true), LOCK_EX);
             // exit;
             
             $yahoo_url = YAHOO_API;
