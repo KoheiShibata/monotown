@@ -75,7 +75,7 @@
             <ul class="sale__list">
                 @foreach($itemDatas as $data)
                 <li class="sale__item {{ $data['visibility'] == 'hidden' ? 'sale__item--hide' : '' }}">
-                    <a href="{{ $data['url'] }}">
+                    <a href="{{ $data['url'] }}" target="_blank">
                         <img src="{{ $data['image'] }}" alt="">
                         <p class="{{ $data['condition'] == 'used' ? 'color--red' : '' }}">{{ $data["price"] }}</p>
                     </a>
@@ -94,7 +94,7 @@
             <ul class="post__list">
                 @foreach($postDatas as $data)
                 <li class="post__item">
-                    <a href="{{ $data['page_url'] }}">
+                    <a href="{{ $data['page_url'] }}" target="_blank">
                         <img src="{{ $data['image'] }}" alt="">
                     </a>
                 </li>
