@@ -1,3 +1,10 @@
+body {
+    font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+    min-height: 90vh;
+    padding-bottom: 40px;
+    position: relative;
+}
+
 .header {
     position: fixed;
     height: 50px;
@@ -9,7 +16,7 @@
 }
 
 .header-nav {
-    width: 1100px;
+    max-width: 1200px;
     margin: auto;
     padding-left: 8px;
 }
@@ -61,15 +68,15 @@
     transition: 0.5s;
 }
 
-
-.footer p {
-    text-align: center;
-    margin-top: 16px;
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 58%;
+    transform: translateX(-50%);
 }
 
 
-@media screen and (max-width: 480px) {
-
+@media screen and (max-width: 660px) {
     /* header */
     .header {
         height: 40px;
@@ -92,7 +99,6 @@
     .header__item--contact {
         display: none;
     }
-
 
     /* hamburger */
     .hamburger__btn {
@@ -130,7 +136,6 @@
         transform: rotate(-45deg);
     }
 
-
     /* nav-search */
     .nav-search {
         display: block;
@@ -148,5 +153,10 @@
 
     .nav-search__item--checked {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* footer */
+    .footer {
+        left: 50%;
     }
 }

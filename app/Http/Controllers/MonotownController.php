@@ -141,7 +141,7 @@ class MonotownController extends Controller
                 ];
             }
 
-            if (count($post_datas) == 8) {
+            if (count($post_datas) == 9) {
                 break;
             }
         }
