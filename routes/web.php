@@ -15,18 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-Route::controller(MonotownController::class)->prefix("monotown")->group(function () {
-    Route::get("/", "monotown");
-});
+Route::get("/", [MonotownController::class, "monotown"])->name("monotown");
 
 Route::controller(ContactController::class)->prefix("contact")->group(function () {
-    Route::get("/", "contact");
-    // Route::post("/", "confirm");
-    Route::post("/", "send");
+    Route::get("/", "contact")->name("contact");
+    Route::post("/send", "send")->name("contact.send");
 });
