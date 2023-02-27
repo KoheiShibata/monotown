@@ -1,5 +1,5 @@
 .header-nav {
-    width: 700px;
+    max-width: 700px;
     padding-left: 5px;
 }
 
@@ -8,12 +8,12 @@
 }
 
 .contact-form {
-    width: 700px;
+    max-width: 700px;
     margin: auto;
     margin-top: 60px;
     margin-bottom: 50px;
     padding: 10px 25px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 8px;
 }
 
@@ -27,7 +27,7 @@
     margin-top: 20px;
     margin-bottom: 12px;
     padding-bottom: 12px;
-    border-bottom: 2px dotted rgba(0, 0, 0, 0.2);
+    border-bottom: 2px dotted rgba(0, 0, 0, 0.3);
 }
 
 .required::after {
@@ -39,7 +39,7 @@
 .form-control:focus {
     color: #495057;
     border-color: black;
-    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.3);
 }
 
 .error-message {
@@ -61,8 +61,12 @@
     margin: auto;
 }
 
+.footer {
+    left: 50%;
+}
 
-@media screen and (max-width: 480px) {
+
+@media screen and (max-width: 660px) {
     .header-nav {
         width: 100%;
         justify-content: center;

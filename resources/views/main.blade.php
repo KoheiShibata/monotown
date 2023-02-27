@@ -18,7 +18,7 @@
                 <p class="common__title">商品状態</p>
                 <ul class="common__list">
                     @foreach(config(CONDITION) as $key => $conditionName)
-                    <a href="/monotown?condition={{ $key }}">
+                    <a href="/?condition={{ $key }}">
                         <li class="common__name {{ session('condition') == $key ? 'common__name--checked' : '' }}">
                             {{ $conditionName }}
                         </li>
@@ -30,7 +30,7 @@
                 <p class="common__title">価格</p>
                 <ul class="common__list">
                     @foreach(config(SORT) as $key => $sortName)
-                    <a href="/monotown?sort={{ $key }}">
+                    <a href="/?sort={{ $key }}">
                         <li class="common__name {{ urlencode(session('sort')) ==  $key ? 'common__name--checked' : ''}}">
                             {{ $sortName }}
                         </li>
@@ -41,7 +41,7 @@
                     <p class="common__title common__title--mens">メンズブランド</p>
                     <ul class="common__list">
                         @foreach(config(MENS_BRAND) as $key => $mensBrandName)
-                        <a href="/monotown?mensBrand={{ $key }}&name={{ $mensBrandName }}">
+                        <a href="/?mensBrand={{ $key }}&name={{ $mensBrandName }}">
                             <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
                                 {{ $mensBrandName }}
                             </li>
@@ -75,7 +75,7 @@
             <ul class="sale__list">
                 @foreach($itemDatas as $data)
                 <li class="sale__item {{ $data['visibility'] == 'hidden' ? 'sale__item--hide' : '' }}">
-                    <a href="{{ $data['url'] }}">
+                    <a href="{{ $data['url'] }}" target="_blank">
                         <img src="{{ $data['image'] }}" alt="">
                         <p class="{{ $data['condition'] == 'used' ? 'color--red' : '' }}">{{ $data["price"] }}</p>
                     </a>
@@ -85,7 +85,7 @@
 
             @if(count($itemDatas) > MAX)
             <div class="common__btn-area">
-                <button class="common__btn accodion__btn accodion__btn--open" id="accodion__btn">MORE +</button>
+                <button class="common__btn accodion__btn accodion__btn--open" id="accodion__btn">MORE</button>
             </div>
             @endif
         </section>
@@ -94,7 +94,7 @@
             <ul class="post__list">
                 @foreach($postDatas as $data)
                 <li class="post__item">
-                    <a href="{{ $data['page_url'] }}">
+                    <a href="{{ $data['page_url'] }}" target="_blank">
                         <img src="{{ $data['image'] }}" alt="">
                     </a>
                 </li>

@@ -82,7 +82,8 @@ class MonotownController extends Controller
 
             return view("/main", compact("itemDatas", "totalResults", "postDatas"));
         } catch (Exception $e) {
-            echo $e;
+            // echo $e;
+            $request->session()->flush();
             abort(404);
         }
     }
@@ -140,7 +141,7 @@ class MonotownController extends Controller
                 ];
             }
 
-            if (count($post_datas) == 8) {
+            if (count($post_datas) == 9) {
                 break;
             }
         }
