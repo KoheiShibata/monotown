@@ -40,7 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    gap: 10px;
+    gap: 24px;
 }
 
 .error__desc p {
