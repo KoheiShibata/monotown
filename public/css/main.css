@@ -182,6 +182,10 @@
         width: 24px;
     }
 
+    .post__list {
+        margin: 0 8px;
+    }
+
     .post__item {
         width: calc(33.3% - 2px);
     }
