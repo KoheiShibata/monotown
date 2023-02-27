@@ -85,7 +85,7 @@
 
             @if(count($itemDatas) > MAX)
             <div class="common__btn-area">
-                <button class="common__btn accodion__btn accodion__btn--open" id="accodion__btn">MORE +</button>
+                <button class="common__btn accodion__btn accodion__btn--open" id="accodion__btn">MORE</button>
             </div>
             @endif
         </section>
