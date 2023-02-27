@@ -18,7 +18,7 @@
                 <p class="common__title">商品状態</p>
                 <ul class="common__list">
                     @foreach(config(CONDITION) as $key => $conditionName)
-                    <a href="/monotown?condition={{ $key }}">
+                    <a href="/?condition={{ $key }}">
                         <li class="common__name {{ session('condition') == $key ? 'common__name--checked' : '' }}">
                             {{ $conditionName }}
                         </li>
@@ -30,7 +30,7 @@
                 <p class="common__title">価格</p>
                 <ul class="common__list">
                     @foreach(config(SORT) as $key => $sortName)
-                    <a href="/monotown?sort={{ $key }}">
+                    <a href="/?sort={{ $key }}">
                         <li class="common__name {{ urlencode(session('sort')) ==  $key ? 'common__name--checked' : ''}}">
                             {{ $sortName }}
                         </li>
@@ -41,7 +41,7 @@
                     <p class="common__title common__title--mens">メンズブランド</p>
                     <ul class="common__list">
                         @foreach(config(MENS_BRAND) as $key => $mensBrandName)
-                        <a href="/monotown?mensBrand={{ $key }}&name={{ $mensBrandName }}">
+                        <a href="/?mensBrand={{ $key }}&name={{ $mensBrandName }}">
                             <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
                                 {{ $mensBrandName }}
                             </li>

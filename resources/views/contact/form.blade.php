@@ -10,7 +10,7 @@
 <section class="contact-form">
     <h2 class="contact-form__title">お問い合わせフォーム</h2>
     <div class="contact-form-wrap">
-        <form action="/contact" method="post" name="contactForm">
+        <form action="{{ route('contact.send') }}" method="post" name="contactForm">
             @csrf
             <div class="form-group">
                 <label for="name" class="contact-form__label required">お名前</label><br>

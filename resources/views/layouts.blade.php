@@ -22,13 +22,13 @@
             <ul class="header__list">
                 <li class="header__item">
                     <div class="header-logo">
-                        <a href="/monotown">
+                        <a href="{{ route('monotown') }}">
                             <p>MONOTOWN</p>
                         </a>
                     </div>
                 </li>
                 <li class="header__item header__item--contact">
-                    <a href="/contact">お問い合わせ✉</a>
+                    <a href="{{ route('contact') }}">お問い合わせ✉</a>
                 </li>
             </ul>
             <!-- hamburger -->

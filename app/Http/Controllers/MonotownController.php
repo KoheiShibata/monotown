@@ -82,7 +82,8 @@ class MonotownController extends Controller
 
             return view("/main", compact("itemDatas", "totalResults", "postDatas"));
         } catch (Exception $e) {
-            echo $e;
+            // echo $e;
+            $request->session()->flush();
             abort(404);
         }
     }
