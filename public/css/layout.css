@@ -47,13 +47,14 @@ body {
     background-color: #AAAAAA;
     font-size: 15px;
     text-align: center;
-    width: 250px;
+    max-width: 400px;
     padding: 10px;
     border-radius: 8px;
     visibility: hidden;
     opacity: 0;
-    top: -20px;
-    left: 48%;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 10;
     transition: 0.5s;
 }
