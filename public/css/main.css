@@ -152,10 +152,11 @@
         overflow: auto;
         opacity: 0;
         right: -30px;
-        top: 50px;
+        top: 0;
+        padding-top: 48px;
         z-index: 1;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         transition: 0.5s;
     }
 
@@ -179,6 +180,10 @@
 
     .post__title img {
         width: 24px;
+    }
+
+    .post__list {
+        margin: 0 8px;
     }
 
     .post__item {

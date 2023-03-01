@@ -1,8 +1,9 @@
 <?php
 
 define("CONTACT_VALIDATE", "validator.contact");
+define("FILTER", "filter.select.");
 define("CONDITION", "filter.select.condition");
-define("MENS_BRAND", "filter.select.MensBrand");
+define("MENS_BRAND", "filter.select.mensBrand");
 define("SORT", "filter.select.sort");
 define("MAX", "12");
 
@@ -17,3 +18,4 @@ define("CUSSIL_QUERY", "17841457502307817?fields=business_discovery.username(cus
 define("REMER_QUERY", "17841457502307817?fields=business_discovery.username(remer_official)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");
 define("LOOSE_QUERY", "17841457502307817?fields=business_discovery.username(loose_official_)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");
 define("CLEL_QUERY", "17841457502307817?fields=business_discovery.username(clel_official)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");
+define("SERACE_QUERY", "17841457502307817?fields=business_discovery.username(serace_official)%7Bmedia%7Bid%2Cmedia_url%2Cpermalink%2Cmedia_type%7D%7D");

@@ -12,7 +12,7 @@ body {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1;
+    z-index: 5;
 }
 
 .header-nav {
@@ -47,7 +47,7 @@ body {
     background-color: #AAAAAA;
     font-size: 15px;
     text-align: center;
-    width: 250px;
+    max-width: 400px;
     padding: 10px;
     border-radius: 8px;
     visibility: hidden;
