@@ -146,7 +146,6 @@ class MonotownController extends Controller
 
         foreach ($filter as $key => $value) {
             $absolute = FILTER;
-            $filter[$key] = urldecode($value);
             if (!in_array($value, array_keys(config($absolute . $key)), true)) {
                 unset($filter[$key]);
                 continue;
