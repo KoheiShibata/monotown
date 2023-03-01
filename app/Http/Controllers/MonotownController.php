@@ -24,9 +24,9 @@ class MonotownController extends Controller
                 ]
             );
 
-            $ig_json = file_get_contents(INSTAGRAM_API_URL.CUSSIL_QUERY.ACCESS_TOKEN, false, $context);
-            file_put_contents("instagram/cussil.json", print_r($ig_json, true), LOCK_EX);
-            exit;
+            // $ig_json = file_get_contents(INSTAGRAM_API_URL.SERACE_QUERY.ACCESS_TOKEN, false, $context);
+            // file_put_contents("instagram/SERACE.json", print_r($ig_json, true), LOCK_EX);
+            // exit;
 
             $yahoo_url = YAHOO_API;
             $fileName = "instagram/yu.json";
@@ -41,11 +41,11 @@ class MonotownController extends Controller
             }
 
             if (session()->has("condition")) {
-                $yahoo_url .= "&".session()->get('condition');
+                $yahoo_url .= "&" . session()->get('condition');
             }
 
             if (session()->has("mensBrand")) {
-                $brand_query = "&".session()->get('mensBrand');
+                $brand_query = "&" . session()->get('mensBrand');
             }
 
             if (session()->has("sort")) {
@@ -54,7 +54,7 @@ class MonotownController extends Controller
             }
 
             if (session()->has("name")) {
-                $fileName = "instagram/".session()->get('name').".json";
+                $fileName = "instagram/" . session()->get('name') . ".json";
             }
 
             $yahoo_json = file_get_contents($yahoo_url . $brand_query, false, $context);
@@ -74,7 +74,7 @@ class MonotownController extends Controller
 
             return view("/main", compact("itemData", "totalResults", "postData"));
         } catch (Exception $e) {
-            echo $e;
+            // echo $e;
             $request->session()->flush();
             abort(404);
         }
@@ -140,28 +140,27 @@ class MonotownController extends Controller
         return $post_data;
     }
 
-
-    private function filtering($filter)
+    /**
+     * filterが正しい値か判別
+     *
+     * @param [type] $filter
+     * @return array
+     */
+    private function filtering($filter): array
     {
         if (empty($filter)) {
-            return;
+            return [];
+        }
+        
+        foreach ($filter as $key => $value) {
+            $absolute = FILTER;
+            $filter[$key] = urldecode($value);         
+            if (!in_array($value, array_keys(config($absolute.$key)), true)) {
+                unset($filter[$key]);
+                continue;
+            }
         }
 
-        if (!empty($filter["condition"]) && !in_array($filter["condition"], array_keys(config(CONDITION)), true)) {
-            unset($filter["condition"]);
-        }
-
-        if (!empty($filter["sort"]) && !in_array($filter["sort"], array_keys(config(SORT)), true)) {
-            unset($filter["sort"]);
-        }
-
-        if (!empty($filter["mensBrand"]) && !in_array($filter["mensBrand"], array_keys(config(MENS_BRAND)), true)) {
-            unset($filter["mensBrand"]);
-        }
-
-        if (!empty($filter["name"]) && !in_array($filter["name"], config(MENS_BRAND), true)) {
-            unset($filter["name"]);
-        }
         return $filter;
     }
 }
