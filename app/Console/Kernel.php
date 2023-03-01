@@ -12,9 +12,9 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
-    protected $commands = [
-        \App\Console\Commands\InstagramPosts::class,
-    ];
+    // protected $commands = [
+    //     \App\Console\Commands\InstagramPosts::class,
+    // ];
 
     /**
      * コマンド実行スケジュール定義
@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('instagram:posts')->dailyAt("4:00");
-        $schedule->command('instagram:posts')->everyThreeMinutes();
+        // $schedule->command('instagram:posts')->everyThreeMinutes();
     }
 
     /**
