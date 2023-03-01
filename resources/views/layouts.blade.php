@@ -46,7 +46,7 @@
     <nav class="nav-search">
         <ul class="nav-search__menu">
             @foreach(config(CONDITION) as $key => $conditionName)
-            <a href="/?condition={{ $key }}">
+            <a href="/?condition={{ urlencode($key) }}">
                 <li class="nav-search__item {{ session('condition') == $key ? 'nav-search__item--checked' : '' }}">
                     {{ $conditionName }}
                 </li>

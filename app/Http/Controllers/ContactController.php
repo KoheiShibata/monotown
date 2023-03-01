@@ -23,7 +23,7 @@ class ContactController extends Controller
         Mail::to("kohei.techis@gmail.com")->send(new ContactSendmail($contact));
 
         $request->session()->flush();
-        return redirect("/monotown")->with("successMessage", "お問い合わせありがとうございました。");
+        return redirect("/")->with("successMessage", "お問い合わせありがとうございました。");
     }
 
 
