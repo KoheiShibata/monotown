@@ -18,10 +18,10 @@ class InstagramPosts extends Command
      *
      * @var string
      */
-    protected $description = 'InstagramグラフAPIを使用して、ブランドの投稿を取得';
+    protected $description = 'InstagramグラフAPIを使用して、mensBrandの投稿内容を更新';
 
     /**
-     * Execute the console command.
+     * メンズブランドのinstagram投稿を取得
      *
      * @return int
      */

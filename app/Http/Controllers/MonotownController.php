@@ -24,7 +24,7 @@ class MonotownController extends Controller
                 ]
             );
             $yahoo_url = YAHOO_API;
-            $fileName = "instagram/u.json";
+            $fileName = "instagram/yu.json";
             $brand_query = "&brand_id=58989";
 
             $filter = $request->only(["condition", "sort", "name", "mensBrand"]);
