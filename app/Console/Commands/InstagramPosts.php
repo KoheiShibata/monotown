@@ -43,7 +43,7 @@ class InstagramPosts extends Command
                 continue;
             }
 
-            file_put_contents("public/instagram/{$key}.json", print_r($instagramPosts, true), LOCK_EX);
+            file_put_contents("/var/www/html/monotown/public/instagram/{$key}.json", print_r($instagramPosts, true), LOCK_EX);
         }
     }
 }
