@@ -23,13 +23,8 @@ class MonotownController extends Controller
                     ]
                 ]
             );
-
-            // $ig_json = file_get_contents(INSTAGRAM_API_URL.SERACE_QUERY.ACCESS_TOKEN, false, $context);
-            // file_put_contents("instagram/SERACE.json", print_r($ig_json, true), LOCK_EX);
-            // exit;
-
             $yahoo_url = YAHOO_API;
-            $fileName = "instagram/yu.json";
+            $fileName = "instagram/u.json";
             $brand_query = "&brand_id=58989";
 
             $filter = $request->only(["condition", "sort", "name", "mensBrand"]);
@@ -58,15 +53,12 @@ class MonotownController extends Controller
             }
 
             $yahoo_json = file_get_contents($yahoo_url . $brand_query, false, $context);
-            $yahoo_data = json_decode($yahoo_json, true);
-
-            $instagram_json = file_get_contents($fileName, false, $context);
-            $instagram_data = json_decode($instagram_json, true);
-
-
-            if (array_key_exists("Error", $yahoo_data)) {
+            if (property_exists($yahoo_json, "Error")) {
                 throw new \Exception();
             }
+            $yahoo_data = json_decode($yahoo_json, true);
+            $instagram_json = file_get_contents($fileName, false, $context);
+            $instagram_data = json_decode($instagram_json, true);
 
             $totalResults = $yahoo_data["totalResultsReturned"];
             $itemData = $this->yahooDataFormater($yahoo_data);
@@ -151,11 +143,11 @@ class MonotownController extends Controller
         if (empty($filter)) {
             return [];
         }
-        
+
         foreach ($filter as $key => $value) {
             $absolute = FILTER;
-            $filter[$key] = urldecode($value);         
-            if (!in_array($value, array_keys(config($absolute.$key)), true)) {
+            $filter[$key] = urldecode($value);
+            if (!in_array($value, array_keys(config($absolute . $key)), true)) {
                 unset($filter[$key]);
                 continue;
             }
