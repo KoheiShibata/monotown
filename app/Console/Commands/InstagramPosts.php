@@ -18,7 +18,7 @@ class InstagramPosts extends Command
      *
      * @var string
      */
-    protected $description = 'InstagramグラフAPIを使用して、mensBrandの投稿内容を更新';
+    protected $description = 'InstagramグラフAPIを使用して、brandの投稿内容を更新';
 
     /**
      * メンズブランドのinstagram投稿を取得
@@ -42,7 +42,6 @@ class InstagramPosts extends Command
             if (property_exists($instagramPosts, "error")) {
                 continue;
             }
-
             file_put_contents("/var/www/html/monotown/public/instagram/{$key}.json", print_r($instagramPosts, true), LOCK_EX);
         }
     }
