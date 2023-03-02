@@ -107,12 +107,8 @@ a:hover {
     border-bottom: 1px solid rgb(0, 0, 0, 0.1);
 }
 
-.common__title--mens {
-    color: #000088;
-}
-
-.common__title--woman {
-    color: #880000;
+.common__title--brown {
+    color: #6E4D3F;
 }
 
 .common__name--checked {

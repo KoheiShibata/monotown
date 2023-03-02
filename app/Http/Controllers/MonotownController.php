@@ -27,7 +27,7 @@ class MonotownController extends Controller
             $fileName = "instagram/yu.json";
             $brand_query = "&brand_id=58989";
 
-            $filter = $request->only(["condition", "sort", "name", "mensBrand"]);
+            $filter = $request->only(["condition", "sort", "name", "brand"]);
             $formated_filter = $this->filtering($filter);
             if (!empty($formated_filter)) {
                 foreach ($formated_filter as $key => $filter) {
@@ -38,16 +38,13 @@ class MonotownController extends Controller
             if (session()->has("condition")) {
                 $yahoo_url .= "&" . session()->get('condition');
             }
-
-            if (session()->has("mensBrand")) {
-                $brand_query = "&" . session()->get('mensBrand');
+            if (session()->has("brand")) {
+                $brand_query = "&" . session()->get('brand');
             }
-
             if (session()->has("sort")) {
                 $sort_encode = urlencode(session()->get("sort"));
                 $yahoo_url .= "&sort={$sort_encode}";
             }
-
             if (session()->has("name")) {
                 $fileName = "instagram/" . session()->get('name') . ".json";
             }

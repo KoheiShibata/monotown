@@ -3,7 +3,7 @@
 define("CONTACT_VALIDATE", "validator.contact");
 define("FILTER", "filter.select.");
 define("CONDITION", "filter.select.condition");
-define("MENS_BRAND", "filter.select.mensBrand");
+define("BRAND", "filter.select.brand");
 define("SORT", "filter.select.sort");
 define("INSTAGRAM_MENS", "filter.instagram.mensPosts");
 define("MAX", "12");

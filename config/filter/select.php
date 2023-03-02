@@ -14,23 +14,30 @@ return [
 
     "name" => [
         "LILL" => "LILL",
-        "cussil" => "cussil",
-        "remer" => "remer",
-        "Loose" => "Loose",
+        "CIASENSE" => "CIASENSE",
         "CLEL" => "CLEL",
+        "cussil" => "cussil",
+        "epnok" => "epnok",
+        "Loose" => "Loose",
+        "remer" => "remer",
+        "RUUBON" => "RUUBON",
         "SERACE" => "SERACE",
+        "welise" => "welise",
+        "WYM LIDNM" => "WYM+LIDNM",
     ],
 
-    "mensBrand" => [
+    "brand" => [
         "brand_id=58989" => "LILL",
-        "query=cussil" => "cussil",
-        "query=remer" => "remer",
-        "brand_id=57013" => "Loose",
+        "brand_id=73710" => "CIASENSE",
         "brand_id=67008" => "CLEL",
+        "query=cussil" => "cussil",
+        "brand_id=53112" => "epnok",
+        "brand_id=57013" => "Loose",
+        "query=remer" => "remer",
+        "brand_id=67005" => "RUUBON",
         "brand_id=73728" => "SERACE",
+        "query=welise" => "welise",
+        "brand_id=54830" => "WYM LIDNM",
     ],
-
-    "womanBrand" => [],
-
 
 ];

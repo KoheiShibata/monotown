@@ -38,24 +38,14 @@
                     @endforeach
                 </ul>
             <li class="common__search-sidebar">
-                <p class="common__title common__title--mens">メンズブランド</p>
+                <p class="common__title common__title--brown">ブランド</p>
                 <ul class="common__list">
-                    @foreach(config(MENS_BRAND) as $key => $mensBrandName)
-                    <a href="/?mensBrand={{ urlencode($key) }}&name={{ urlencode($mensBrandName) }}">
-                        <li class="common__name {{ session('mensBrand') == $key ? 'common__name--checked' : ''}}">
-                            {{ $mensBrandName }}
+                    @foreach(config(BRAND) as $key => $brandName)
+                    <a href="/?brand={{ urlencode($key) }}&name={{ urlencode($brandName) }}">
+                        <li class="common__name {{ session('brand') == $key ? 'common__name--checked' : ''}}">
+                            {{ $brandName }}
                         </li>
                     </a>
-                    @endforeach
-                </ul>
-            </li>
-            <li class="common__search-sidebar">
-                <p class="common__title common__title--woman">レディースブランド</p>
-                <ul class="common__list">
-                    @foreach(config(MENS_BRAND) as $key => $brandName)
-                    <li class="common__name">
-                        {{ $brandName }}
-                    </li>
                     @endforeach
                 </ul>
             </li>
