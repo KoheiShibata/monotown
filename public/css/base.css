@@ -180,8 +180,12 @@ a:hover {
     font-size: 16px;
 }
 
+.no-item__message {
+    font-size: 18px;
+}
 
-@media screen and (max-width: 480px) {
+
+@media screen and (max-width: 660px) {
 
     /* common */
     .common__search-sidebar.common__search-sidebar--end {
@@ -223,6 +227,10 @@ a:hover {
 
     .sale__item p {
         font-size: 14px;
+    }
+
+    .no-item__message {
+        font-size: 16px;
     }
 
     .footer p {

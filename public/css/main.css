@@ -66,6 +66,12 @@
     display: block;
 }
 
+.no-item__message  p {
+    text-align: center;
+    padding: 64px 0 32px;
+    opacity: 0.8;
+}
+
 /* アコーディオン */
 .accodion__btn {
     position: relative;

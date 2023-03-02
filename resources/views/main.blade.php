@@ -62,6 +62,11 @@
 
     <main class="main">
         <section class="sale">
+            @if($totalResults == 0)
+            <div class="no-item__message">
+                <p>該当するアイテムがありませんでした</p>
+            </div>
+            @endif
             <ul class="sale__list">
                 @foreach($itemData as $data)
                 <li class="sale__item {{ $data['visibility'] == 'hidden' ? 'sale__item--hide' : '' }}">
