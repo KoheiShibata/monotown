@@ -23,7 +23,6 @@ return [
         "RUUBON" => "RUUBON",
         "SERACE" => "SERACE",
         "welise" => "welise",
-        "WYM LIDNM" => "WYM+LIDNM",
     ],
 
     "brand" => [
@@ -37,7 +36,6 @@ return [
         "brand_id=67005" => "RUUBON",
         "brand_id=73728" => "SERACE",
         "query=welise" => "welise",
-        "brand_id=54830" => "WYM LIDNM",
     ],
 
 ];
