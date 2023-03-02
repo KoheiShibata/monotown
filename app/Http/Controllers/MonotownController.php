@@ -23,11 +23,14 @@ class MonotownController extends Controller
                     ]
                 ]
             );
+            if ($_SERVER['REQUEST_URI'] === "/") {
+                session()->flush();
+            }
             $yahoo_url = YAHOO_API;
             $fileName = "instagram/yu.json";
             $brand_query = "&brand_id=58989";
 
-            $filter = $request->only(["condition", "sort", "name", "mensBrand"]);
+            $filter = $request->only(["condition", "sort", "name", "brand"]);
             $formated_filter = $this->filtering($filter);
             if (!empty($formated_filter)) {
                 foreach ($formated_filter as $key => $filter) {
@@ -38,16 +41,13 @@ class MonotownController extends Controller
             if (session()->has("condition")) {
                 $yahoo_url .= "&" . session()->get('condition');
             }
-
-            if (session()->has("mensBrand")) {
-                $brand_query = "&" . session()->get('mensBrand');
+            if (session()->has("brand")) {
+                $brand_query = "&" . session()->get('brand');
             }
-
             if (session()->has("sort")) {
                 $sort_encode = urlencode(session()->get("sort"));
                 $yahoo_url .= "&sort={$sort_encode}";
             }
-
             if (session()->has("name")) {
                 $fileName = "instagram/" . session()->get('name') . ".json";
             }
@@ -67,7 +67,6 @@ class MonotownController extends Controller
             return view("/main", compact("itemData", "totalResults", "postData"));
         } catch (Exception $e) {
             // echo $e;
-            $request->session()->flush();
             abort(404);
         }
     }
@@ -146,7 +145,6 @@ class MonotownController extends Controller
 
         foreach ($filter as $key => $value) {
             $absolute = FILTER;
-            $filter[$key] = urldecode($value);
             if (!in_array($value, array_keys(config($absolute . $key)), true)) {
                 unset($filter[$key]);
                 continue;
