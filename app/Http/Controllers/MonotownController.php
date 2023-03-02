@@ -23,6 +23,9 @@ class MonotownController extends Controller
                     ]
                 ]
             );
+            if ($_SERVER['REQUEST_URI'] === "/") {
+                session()->flush();
+            }
             $yahoo_url = YAHOO_API;
             $fileName = "instagram/yu.json";
             $brand_query = "&brand_id=58989";
@@ -64,7 +67,6 @@ class MonotownController extends Controller
             return view("/main", compact("itemData", "totalResults", "postData"));
         } catch (Exception $e) {
             // echo $e;
-            $request->session()->flush();
             abort(404);
         }
     }
