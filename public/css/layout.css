@@ -47,7 +47,7 @@ body {
     background-color: #AAAAAA;
     font-size: 15px;
     text-align: center;
-    max-width: 400px;
+    min-width: 300px;
     padding: 10px;
     border-radius: 8px;
     visibility: hidden;

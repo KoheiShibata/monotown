@@ -22,7 +22,6 @@ class ContactController extends Controller
         $contact = $request->validate(config(CONTACT_VALIDATE));
         Mail::to("kohei.techis@gmail.com")->send(new ContactSendmail($contact));
 
-        $request->session()->flush();
         return redirect("/")->with("successMessage", "お問い合わせありがとうございました。");
     }
 

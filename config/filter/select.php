@@ -1,5 +1,12 @@
 <?php
 return [
+    "filterKey" => [
+        "condition",
+        "sort",
+        "name",
+        "brand",
+    ],
+
     "condition" => [
         "&&" => "All",
         "condition=new" => "New",

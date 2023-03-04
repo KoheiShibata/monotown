@@ -1,6 +1,7 @@
 <?php
 
 define("CONTACT_VALIDATE", "validator.contact");
+define("FILTER_KEY", "filter.select.filterKey");
 define("FILTER", "filter.select.");
 define("CONDITION", "filter.select.condition");
 define("BRAND", "filter.select.brand");

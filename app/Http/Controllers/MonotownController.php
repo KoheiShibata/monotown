@@ -24,13 +24,13 @@ class MonotownController extends Controller
                 ]
             );
             if ($_SERVER['REQUEST_URI'] === "/") {
-                session()->flush();
+                session()->forget(config(FILTER_KEY));
             }
             $yahoo_url = YAHOO_API;
             $fileName = "instagram/yu.json";
             $brand_query = "&brand_id=58989";
 
-            $filter = $request->only(["condition", "sort", "name", "brand"]);
+            $filter = $request->only(config(FILTER_KEY));
             $formated_filter = $this->filtering($filter);
             if (!empty($formated_filter)) {
                 foreach ($formated_filter as $key => $filter) {
