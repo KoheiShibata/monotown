@@ -66,7 +66,7 @@ class MonotownController extends Controller
 
             return view("/main", compact("itemData", "totalResults", "postData"));
         } catch (Exception $e) {
-            echo $e;
+            // echo $e;
             abort(404);
         }
     }
