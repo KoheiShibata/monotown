@@ -34,7 +34,7 @@ WEB上でモノトーンファッションの商品を閲覧できる、WEBア�
 
 ## How to install & Start-up
 ```
-$ git clone https://github.com/KoheiShibata/Dragonball_book.git
+$ git clone https://github.com/KoheiShibata/monotown.git
 $ cp .env.example .env
 $ composer install
 $ php artisan key:generate
